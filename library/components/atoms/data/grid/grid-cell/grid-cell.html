@@ -1,0 +1,7 @@
+<div
+  class="item flex justify-between pb-2 pt-2 text-xs sm:text-sm lg:text-base"
+  [class.border-b]="!isLast()"
+>
+  <p>{{ header() }}</p>
+  <p class="font-bold" [innerHTML]="value()"></p>
+</div>

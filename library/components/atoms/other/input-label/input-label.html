@@ -1,0 +1,9 @@
+<label class="ck-font text-gray-800 font-normal" [for]="field()">
+  @if (icon()) {
+    <fa-icon class="text-zinc-500" [icon]="icon()"></fa-icon>
+  }
+  {{ label() }}
+  @if (hasRequired()) {
+    <span class="text-danger-500">*</span>
+  }
+</label>

@@ -1,0 +1,39 @@
+<app-input
+  [errors]="errors()"
+  [field]="field()"
+  [label]="label()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    <p-select
+      class="w-full ck-select"
+      [options]="data()"
+      [ngModel]="value()"
+      [optionLabel]="labelKey()?.toString()"
+      [filter]="!!filterBy()"
+      [filterBy]="filterBy()?.toString()"
+      [showClear]="showClear()"
+      appendTo="body"
+      panelStyleClass="ck-select"
+      [placeholder]="placeholder() || 'Seleccionar'"
+      emptyFilterMessage="No se encontraron resultados"
+      emptyMessage="No se encontraron resultados"
+      (ngModelChange)="onInputChange($event)"
+    >
+      @if (labelRender()) {
+        <ng-template pTemplate="item" let-item>
+          <span>
+            <app-render-item [item]="item" [labelKey]="labelKey()" [render]="labelRender()" />
+          </span>
+        </ng-template>
+        <ng-template pTemplate="selectedItem" let-item>
+          <app-render-item [item]="item" [labelKey]="labelKey()" [render]="labelRender()" />
+        </ng-template>
+      }
+    </p-select>
+  </content>
+</app-input>

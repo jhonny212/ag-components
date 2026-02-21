@@ -1,0 +1,11 @@
+<div class="modal">
+  <p-dialog [header]="title()" [modal]="true" [(visible)]="visible"
+    [class]="class()">
+    @if (subTitle()) {
+      <span class="modal-subtitle">{{ subTitle() }}</span>
+    }
+    <ng-content select="content"></ng-content>
+    <ng-content select="footer"></ng-content>
+  </p-dialog>
+</div>
+

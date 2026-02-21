@@ -1,0 +1,46 @@
+@for (item of columns(); track $index) {
+  <td>
+    <app-table-cell [column]="item" [rowValue]="data()" />
+  </td>
+}
+@if (actions().length && actionMode() === 'buttons') {
+  <td class="actions">
+    @for (item of actions(); track $index) {
+      <app-button
+        [severity]="item.color"
+        [rounded]="true"
+        [icon]="item.faIcon"
+        [loading]="!!cellEvents().get(item.triggerAction)?.loading"
+        (onClick)="handleAction(item)"
+      />
+    }
+  </td>
+} @else if (actions().length && actionMode() === 'dropdown') {
+  <td class="actions-dropdown">
+    <div class="content">
+      <p-popover #op>
+        <ng-template #content>
+          <ol>
+            @for (item of actions(); track $index) {
+              <li class="btn-trigger">
+                <button
+                  (click)="handleAction(item); op.hide()"
+                  [disabled]="!!cellEvents().get(item.triggerAction)?.loading"
+                >
+                  <fa-icon [icon]="item.faIcon"></fa-icon>
+                  {{ item.label }}
+                </button>
+              </li>
+            }
+          </ol>
+        </ng-template>
+      </p-popover>
+      <app-button
+        (onClick)="op.toggle($event)"
+        [icon]="dotsIcon"
+        [rounded]="true"
+        severity="info"
+      />
+    </div>
+  </td>
+}

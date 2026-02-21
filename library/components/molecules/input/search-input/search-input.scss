@@ -1,0 +1,11 @@
+.ck-search {
+  @apply flex w-full;
+
+  p-iconfield {
+    @apply w-full;
+  }
+}
+
+.ck-search-icon {
+  @apply absolute top-3 left-3 text-gray-500;
+}

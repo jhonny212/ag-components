@@ -1,0 +1,12 @@
+<app-input [label]="label()">
+  <content>
+    <p-datepicker
+      [ngModel]="value()"
+      [showClear]="true"
+      [selectionMode]="selectionMode()"
+      appendTo="body"
+      (ngModelChange)="handleChange($event)"
+    >
+    </p-datepicker>
+  </content>
+</app-input>

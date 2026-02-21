@@ -1,0 +1,24 @@
+<app-card [title]="title()" [subTitle]="subTitle() || ''">
+  <header>
+    <ng-content select="header"> </ng-content>
+  </header>
+  <content>
+    <app-table
+      [data]="tableData()"
+      [hasBasicSearch]="hasBasicSearch()"
+      [loading]="isLoadingData()"
+      [dataSourceConfig]="dataSourceConfig()"
+      [primaryKey]="primaryKey()"
+      [enableRowSelection]="enableRowSelection()"
+      [totalRecords]="totalItems()"
+      [hasPagination]="hasPagination()"
+      [actions]="actions()"
+      [actionMode]="actionMode()"
+      [addEmptyRows]="addEmptyRows()"
+      [(dataSourceFilter)]="dataSourceFilter"
+      (onRowSelected)="handleRowSelected($event)"
+      (onLoadData)="handleLoadData($event)"
+      (onAction)="handleAction($event)"
+    />
+  </content>
+</app-card>

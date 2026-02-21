@@ -1,0 +1,18 @@
+<div class="flex flex-col gap-2">
+  <div class="title" [class.mb-3]="!subTitle()">
+    <span>{{ title() }}</span>
+    <div class="view">
+      <span [class.active]="isTableView()" (click)="handleViewChange(true)">
+        <fa-icon class="cursor-pointer" [icon]="tableView" />
+      </span>
+      <span [class.active]="!isTableView()" (click)="handleViewChange(false)">
+        <fa-icon class="cursor-pointer ml-2" [icon]="cardView" />
+      </span>
+    </div>
+  </div>
+  @if (subTitle()) {
+    <p class="subtitle">
+      {{ subTitle() }}
+    </p>
+  }
+</div>

@@ -1,0 +1,18 @@
+<div class="breadcrumb">
+  <p-breadcrumb [model]="items() || []" [home]="home">
+    <ng-template pTemplate="item" let-item>
+      <div class="content" [pTooltip]="item.label" tooltipPosition="top">
+        @if (item.faIcon) {
+          <span (click)="handleRedirect(item)">
+            <fa-icon class="cursor-pointer" [icon]="item.faIcon" />
+          </span>
+        }
+        @if (item.routerLink) {
+          <a [routerLink]="item.routerLink">{{ item.label }}</a>
+        } @else {
+          <a>{{ item.label }}</a>
+        }
+      </div>
+    </ng-template>
+  </p-breadcrumb>
+</div>

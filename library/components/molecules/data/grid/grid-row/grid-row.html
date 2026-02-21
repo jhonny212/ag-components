@@ -1,0 +1,30 @@
+<div class="content">
+  @if (actions().length > 0) {
+    <p-popover #op>
+      <ng-template #content>
+        <ol>
+          @for (item of actions(); track $index) {
+            <li class="btn-trigger">
+              <button
+                (click)="handleAction(item); op.hide()"
+                [disabled]="!!cellEvents().get(item.triggerAction)?.loading"
+              >
+                <fa-icon [icon]="item.faIcon"></fa-icon>
+                {{ item.label }}
+              </button>
+            </li>
+          }
+        </ol>
+      </ng-template>
+    </p-popover>
+    <app-button
+      [rounded]="true"
+      class="data-action"
+      [icon]="dotsIcon"
+      (onClick)="op.toggle($event)"
+    />
+  }
+  @for (item of columns(); track $index; let i = $index) {
+    <app-grid-cell [column]="item" [rowValue]="data()" [isLast]="i === columns().length - 1" />
+  }
+</div>

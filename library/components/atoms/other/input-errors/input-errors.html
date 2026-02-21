@@ -1,0 +1,7 @@
+<ul class="mt-1 space-y-1 list-disc list-inside">
+  @for (error of errors(); track error) {
+    @if (!hasRequired()) {
+      <li class="text-danger-500">{{ error.message }}</li>
+    }
+  }
+</ul>

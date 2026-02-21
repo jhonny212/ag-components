@@ -1,0 +1,24 @@
+<app-input
+  [errors]="errors()"
+  [field]="field()"
+  [label]="label()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [icon]="icon()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    <input
+      pInputText
+      [id]="field()"
+      [class]="'ck-input-text ' + inputClass()"
+      [placeholder]="placeholder()"
+      [type]="type()"
+      [ngModel]="value()"
+      (ngModelChange)="onInputChange($event)"
+      (blur)="touched.set(true)"
+    />
+  </content>
+</app-input>

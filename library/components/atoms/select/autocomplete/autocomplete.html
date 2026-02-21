@@ -1,0 +1,44 @@
+<app-input
+  [errors]="errors()"
+  [field]="field()"
+  [label]="label()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    <p-autoComplete
+      #autocomplete
+      class="w-full"
+      appendTo="body"
+      emptyMessage="No se encontraron resultados, presione Enter para agregar."
+      [inputId]="field()"
+      [placeholder]="placeholder()"
+      [ngModel]="selectedItem"
+      [suggestions]="data()"
+      [dropdown]="false"
+      [minQueryLength]="2"
+      [delay]="500"
+      [addOnBlur]="true"
+      [forceSelection]="false"
+      [optionLabel]="labelKey()?.toString()"
+      (ngModelChange)="onInputChange($event)"
+      (onSelect)="handleSelect($event)"
+      (completeMethod)="handleFilter($event)"
+      (keydown.enter)="handleAdd($event, autocomplete)"
+    >
+      <ng-template let-item pTemplate="item">
+        <div class="flex flex-col">
+          @if (labelRender()) {
+            <app-render-item [item]="item" [render]="labelRender()" />
+            <!-- <span [innerHTML]="labelRender(item)"></span> -->
+          } @else {
+            <span>{{ item[labelKey()] }}</span>
+          }
+        </div>
+      </ng-template>
+    </p-autoComplete>
+  </content>
+</app-input>

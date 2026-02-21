@@ -1,0 +1,79 @@
+<div class="card">
+  <p-table
+    #dtTable
+    stripedRows
+    class="ck-table"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+    [globalFilterFields]="['name']"
+    [showCurrentPageReport]="true"
+    [lazy]="true"
+    [sortField]="dataSourceFilter().sortColumn?.toString()"
+    [sortOrder]="dataSourceFilter().sortDirection === 'ASC' ? 1 : -1"
+    [paginator]="hasPagination()"
+    [rows]="dataSourceFilter().pagination.pageSize"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [totalRecords]="totalRecords()"
+    [value]="dataTableData()"
+    [loading]="loading()"
+    [selectionMode]="enableRowSelection() ? selectionMode() : undefined"
+    [(selection)]="selectedProduct"
+    [metaKeySelection]="true"
+    [dataKey]="primaryKey()?.toString()"
+    (onPage)="handlePage($event)"
+    (onRowSelect)="handleRowSelected($event)"
+    (onLazyLoad)="handleLoadData($event)"
+  >
+    @if (hasBasicSearch()) {
+      <ng-template #caption>
+        <div class="max-w-[300px]">
+          <app-search-input
+            [(value)]="searchTerm"
+            [debounceTime]="600"
+            (valueChange)="handleSearch()"
+          />
+        </div>
+      </ng-template>
+    }
+    <ng-template #header>
+      <tr app-table-header [columns]="dataSourceConfig().columns" [actions]="actions()"></tr>
+    </ng-template>
+    @if (dataTableData().length) {
+      <ng-template #body let-product>
+        @if (isObjectNotEmpty(product)) {
+          <tr
+            [pSelectableRow]="product"
+            app-table-row
+            [pSelectableRow]="product"
+            [columns]="dataSourceConfig().columns"
+            [actions]="actions()"
+            [actionMode]="actionMode()"
+            [data]="product"
+            (onAction)="handleAction($event)"
+          ></tr>
+        } @else {
+          <!--start: Render empty state when there are no records -->
+          <tr>
+            @for (item of dataSourceConfig().columns; track $index) {
+              <td>&nbsp;</td>
+            }
+            @if (actions().length) {
+              <td>&nbsp;</td>
+            }
+          </tr>
+          <!--end: Render empty state when there are no records -->
+        }
+      </ng-template>
+    }
+    <ng-template #emptymessage>
+      <tr>
+        <td [colSpan]="dataSourceConfig().columns.length + (actions().length ? 1 : 0)">
+          <app-empty-message
+            class="min-h-[300px] flex items-center justify-center"
+            title="Datos vacíos"
+            [icon]="emptyIcon"
+          />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

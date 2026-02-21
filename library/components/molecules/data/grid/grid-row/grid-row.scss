@@ -1,0 +1,13 @@
+.data-action {
+  @apply flex justify-end;
+}
+
+.btn-trigger {
+  button {
+    @apply p-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-700 rounded;
+  }
+
+  fa-icon {
+    @apply mr-2;
+  }
+}

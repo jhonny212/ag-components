@@ -1,0 +1,27 @@
+<div class="grid grid-cols-1 gap-4">
+  @if (data().length) {
+    <app-paginator
+      class="grid-paginator"
+      pageTemplate="{first} a {last}"
+      [first]="first()"
+      [rows]="rows()"
+      [showPages]="true"
+      [showDropdown]="false"
+      [totalRecords]="totalRecords()"
+      (onPage)="handlePageChange($event)"
+    />
+    @for (item of data(); track $index) {
+      <app-grid-card
+        class="px-2"
+        [selectedItem]="selectedItem()"
+        [item]="item"
+        [dataSourceConfig]="dataSourceConfig()"
+        [actions]="actions()"
+        (onClick)="handleClick($event)"
+        (onAction)="handleAction($event)"
+      />
+    }
+  } @else {
+    <app-empty-message [icon]="emptyIcon" title="Sin registros" />
+  }
+</div>

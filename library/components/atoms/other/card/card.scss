@@ -1,0 +1,11 @@
+.ck-card.primary {
+  @apply bg-primary-50;
+}
+
+.ck-card.gray {
+  @apply bg-gray-50;
+}
+
+.card-title {
+  @apply text-xl font-semibold px-4 pt-4;
+}

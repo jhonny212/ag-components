@@ -1,0 +1,31 @@
+.ck-card.success .title {
+  @apply text-success-600;
+}
+
+.ck-card.danger .title {
+  @apply text-danger-500;
+}
+
+.ck-card .danger p {
+  @apply text-danger-500/90;
+}
+
+.ck-card .success p {
+  @apply text-success-600/90;
+}
+
+.title {
+  @apply flex items-center gap-2;
+
+  span {
+    @apply text-base sm:text-lg font-semibold;
+  }
+}
+
+.content {
+  @apply flex flex-col gap-2;
+
+  p {
+    @apply text-lg sm:text-2xl font-bold text-gray-600;
+  }
+}

@@ -1,0 +1,16 @@
+<app-card [class]="severity() + ' ck-card'">
+  <header>
+    <div class="title">
+      @if (icon()) {
+        <fa-icon [icon]="icon()"></fa-icon>
+      }
+      <span>{{ title() }}</span>
+    </div>
+    @if (subTitle()) {
+      <div class="sub-title">{{ subTitle() }}</div>
+    }
+  </header>
+  <content [class]="'content ' + severity()">
+    <p class="">{{ info() }}</p>
+  </content>
+</app-card>

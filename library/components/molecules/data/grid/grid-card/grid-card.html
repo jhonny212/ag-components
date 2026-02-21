@@ -1,0 +1,44 @@
+<app-card
+  class="grid-card"
+  [class.expanded]="isExpanded()"
+  [color]="cardColor()"
+  [isClickable]="!!dataSourceConfig().isClickable"
+  (onClick)="handleClick()"
+>
+  <header>
+    @if (dataSourceConfig().mobileMode === 'card') {
+      <app-grid-header
+        [header]="dataSourceConfig().header"
+        [item]="item()"
+        [headerRender]="dataSourceConfig().headerRender"
+      />
+    }
+  </header>
+  <content>
+    @if (dataSourceConfig().mobileMode === 'card-expanded') {
+      <p-accordion>
+        <p-accordion-panel value="0">
+          <p-accordion-header
+            class="!font-bold !text-gray-700 md:!text-lg !bg-transparent !border-0"
+          >
+            <app-grid-header
+              [header]="dataSourceConfig().header"
+              [item]="item()"
+              [headerRender]="dataSourceConfig().headerRender"
+            />
+          </p-accordion-header>
+          <p-accordion-content>
+            <app-grid-row
+              [columns]="dataSourceConfig().columns"
+              [data]="item()"
+              [actions]="actions()"
+              (onAction)="handleAction($event)"
+            />
+          </p-accordion-content>
+        </p-accordion-panel>
+      </p-accordion>
+    } @else {
+      <app-grid-row [columns]="dataSourceConfig().columns" [data]="item()" />
+    }
+  </content>
+</app-card>

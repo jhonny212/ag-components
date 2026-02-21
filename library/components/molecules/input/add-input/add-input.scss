@@ -1,0 +1,11 @@
+.content {
+  @apply grid grid-cols-[1fr_30px] gap-2;
+
+  .btn {
+    @apply relative;
+
+    app-button {
+      @apply absolute right-0 top-[1.05rem];
+    }
+  }
+}

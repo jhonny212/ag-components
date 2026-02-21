@@ -1,0 +1,14 @@
+<div class="ck-searhc">
+  <p-iconfield iconPosition="right">
+    @if (searchIcon) {
+      <div class="ck-search-icon">
+        <fa-icon [icon]="searchIcon" />
+      </div>
+    }
+    <app-input-text inputClass="!px-10"
+      [placeholder]="placeholder() || 'Buscar'"
+      [debounceTime]="debounceTime()"
+      [(value)]="value"
+    />
+  </p-iconfield>
+</div>

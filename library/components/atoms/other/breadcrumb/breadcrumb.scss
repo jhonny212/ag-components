@@ -1,0 +1,15 @@
+p-breadcrumb {
+  @apply w-full pb-5 bg-white;
+}
+
+.breadcrumb {
+  @apply flex w-full;
+}
+
+.breadcrumb a {
+  @apply ml-2 text-[0px] md:text-sm lg:text-base text-gray-700;
+}
+
+fa-icon{
+  @apply text-gray-800;
+}

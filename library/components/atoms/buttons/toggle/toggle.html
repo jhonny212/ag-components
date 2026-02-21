@@ -1,0 +1,14 @@
+<app-input
+  [label]="label()"
+  [field]="field()"
+  [errors]="errors()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    <p-toggleswitch [ngModel]="value()" (ngModelChange)="onInputChange($event)" />
+  </content>
+</app-input>

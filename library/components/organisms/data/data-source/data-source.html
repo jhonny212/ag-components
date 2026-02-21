@@ -1,0 +1,52 @@
+@if (!isTableView()) {
+  <app-card [isClickable]="false">
+    <header>
+      <app-data-source-header
+        [title]="title()"
+        [subTitle]="subTitle()"
+        [(isTableView)]="isTableView"
+      />
+    </header>
+    <content>
+      <div class="grid-view">
+        <app-grid-view
+          class="mt-5"
+          [(dataSourceFilter)]="dataSourceFilter"
+          [data]="tableData()"
+          [totalRecords]="totalItems()"
+          [actions]="actions()"
+          [dataSourceConfig]="dataSourceConfig()"
+          (onRowSelected)="handleSelectRow($event)"
+          (onLoadData)="handleLoadData($event)"
+          (onAction)="handleAction($event)"
+        />
+      </div>
+    </content>
+  </app-card>
+} @else {
+  <app-table-card
+    [title]="''"
+    [subTitle]="''"
+    [(dataSourceFilter)]="dataSourceFilter"
+    [dataSourceConfig]="dataSourceConfig()"
+    [actionMode]="actionMode()"
+    [loading]="isLoadingData()"
+    [data]="tableData()"
+    [totalRecords]="totalItems()"
+    [primaryKey]="primaryKey()"
+    [actions]="actions()"
+    [addEmptyRows]="addEmptyRows()"
+    [enableRowSelection]="true"
+    (onLoadData)="handleLoadData($event)"
+    (onRowSelected)="handleSelectRow($event)"
+    (onAction)="handleAction($event)"
+  >
+    <header>
+      <app-data-source-header
+        [title]="title()"
+        [subTitle]="subTitle()"
+        [(isTableView)]="isTableView"
+      />
+    </header>
+  </app-table-card>
+}

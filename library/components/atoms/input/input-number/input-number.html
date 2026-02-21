@@ -1,0 +1,24 @@
+<app-input
+  [errors]="errors()"
+  [field]="field()"
+  [label]="label()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    <p-inputnumber
+      inputId="integeronly"
+      class="ck-input-number"
+      [mode]="mode()"
+      [useGrouping]="false"
+      [minFractionDigits]="mode() ? 2 : undefined"
+      [maxFractionDigits]="mode() ? 2 : undefined"
+      [ngModel]="value()"
+      (ngModelChange)="onInputChange($event)"
+      (onBlur)="touched.set(true)"
+    />
+  </content>
+</app-input>

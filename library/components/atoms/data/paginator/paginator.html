@@ -1,0 +1,12 @@
+<p-paginator
+  [first]="first()"
+  [rows]="rows()"
+  [totalRecords]="totalRecords()"
+  [showPageLinks]="showPages()"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  [showJumpToPageDropdown]="showDropdown()"
+  [currentPageReportTemplate]="pageTemplate()"
+  (onPageChange)="onPageChange($event)"
+/>
+<!--
+Mostrando {first} a {last} de {totalRecords} registros -->

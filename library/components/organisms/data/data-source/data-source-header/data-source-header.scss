@@ -1,0 +1,11 @@
+.title {
+  @apply text-xl font-bold text-gray-600 dark:text-white flex justify-between;
+}
+
+.view .active {
+  @apply text-primary-500;
+}
+
+.subtitle {
+  @apply text-sm text-gray-500 dark:text-gray-400 mb-3;
+}

@@ -1,0 +1,13 @@
+<div class="w-full h-full flex flex-col items-center justify-center gap-4">
+  <div class="text-5xl opacity-30">
+    @if (icon()) {
+      <fa-icon [icon]="icon()" />
+    }
+  </div>
+  <div>
+    <p class="text-gray-500 text-center text-base font-semibold">{{ title() }}</p>
+    <p class="text-gray-500 text-center text-sm">
+      {{ message() }}
+    </p>
+  </div>
+</div>

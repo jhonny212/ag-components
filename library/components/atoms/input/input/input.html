@@ -1,0 +1,12 @@
+<div class="card flex justify-center w-full">
+  <div class="flex flex-col w-full">
+    <app-input-label class="mb-1" [label]="label()" [field]="field()" [icon]="icon()" [hasRequired]="hasRequired()" />
+    <ng-content select="content"> </ng-content>
+    @if (help()) {
+      <small id="field-help">{{ help() }}</small>
+    }
+    @if (touched() && invalid()) {
+      <app-input-errors [errors]="errors()" [hasRequired]="hasRequired()" />
+    }
+  </div>
+</div>

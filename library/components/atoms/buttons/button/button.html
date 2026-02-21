@@ -1,0 +1,16 @@
+<p-button
+  (click)="handleClick($event)"
+  [class]="class() + ' ck-button'"
+  [severity]="severity()"
+  [label]="label()"
+  [loading]="loading()"
+  [disabled]="disable()"
+  [rounded]="rounded()"
+  [class.rounded]="rounded()"
+>
+  <ng-template pTemplate="icon">
+    @if (icon()) {
+      <fa-icon [icon]="icon()" />
+    }
+  </ng-template>
+</p-button>

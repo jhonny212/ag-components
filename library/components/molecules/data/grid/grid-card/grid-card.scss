@@ -1,0 +1,15 @@
+app-card.expanded {
+  .ck-card {
+    padding: 0 !important;
+  }
+}
+
+.grid-card{
+  .ck-card {
+    @apply shadow-2xl;
+  }
+}
+
+p-accordion-panel {
+  border-width: 0px !important;
+}
