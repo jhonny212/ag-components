@@ -25,7 +25,7 @@
   >
     @if (hasBasicSearch() || enableReload()) {
       <ng-template #caption>
-        <div class="toolbar">
+        <div class="toolbar" [class.flex-row-reverse]="enableReload() && !hasBasicSearch()">
           @if (hasBasicSearch()) {
             <div class="max-w-[300px]">
               <app-search-input

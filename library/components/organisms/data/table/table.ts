@@ -12,16 +12,26 @@ import { InputIconModule } from 'primeng/inputicon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
 import { BaseTable } from 'src/app/shared/library/base';
-import { SearchInput } from "../../../molecules";
-import { TableHeader } from "../../../molecules/data/table/table-header/table-header";
-import { TableRow } from "../../../molecules/data/table/table-row/table-row";
+import { SearchInput } from '../../../molecules';
+import { TableHeader } from '../../../molecules/data/table/table-header/table-header';
+import { TableRow } from '../../../molecules/data/table/table-row/table-row';
 import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-message';
-import { Button } from "../../../atoms/buttons/button/button";
-
+import { Button } from '../../../atoms/buttons/button/button';
 
 @Component({
   selector: 'app-table',
-  imports: [TableModule, FormsModule, IconFieldModule, InputIconModule, FontAwesomeModule, SearchInput, TableHeader, TableRow, EmptyMessage, Button],
+  imports: [
+    TableModule,
+    FormsModule,
+    IconFieldModule,
+    InputIconModule,
+    FontAwesomeModule,
+    SearchInput,
+    TableHeader,
+    TableRow,
+    EmptyMessage,
+    Button,
+  ],
   templateUrl: './table.html',
   styleUrl: './table.scss',
 })
@@ -37,7 +47,10 @@ export class Table<T> extends BaseTable<T> {
     if (this.addEmptyRows()) {
       const emptyRowsCount =
         (this.dataSourceFilter()?.pagination.pageSize || 10) - (this.data()?.length || 0);
-      if (emptyRowsCount === this.dataSourceFilter()?.pagination.pageSize && !this.isLoadingData()) {
+      if (
+        emptyRowsCount === this.dataSourceFilter()?.pagination.pageSize &&
+        !this.isLoadingData()
+      ) {
         return [];
       }
       const emptyRows = Array.from({ length: emptyRowsCount }, () => ({}) as T);
@@ -78,5 +91,10 @@ export class Table<T> extends BaseTable<T> {
 
   isObjectNotEmpty(value: any): boolean {
     return Object.keys(value).length > 0;
+  }
+
+  protected override handleReloadData(): void {
+    this.selectedProduct = null;
+    super.handleReloadData();
   }
 }
