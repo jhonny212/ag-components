@@ -1,4 +1,4 @@
-<app-card [class]="severity() + ' ck-card'">
+<app-card [class]="severity() + ' ck-card'" [loading]="loading()">
   <header>
     <div class="title">
       @if (icon()) {
@@ -13,4 +13,13 @@
   <content [class]="'content ' + severity()">
     <p class="">{{ info() }}</p>
   </content>
+  <div loading>
+    <div class="loader">
+      <div class="loader-header">
+        <app-skeleton-icon />
+        <app-skeleton-input />
+      </div>
+      <app-skeleton-text [paragraphNumber]="2" />
+    </div>
+  </div>
 </app-card>

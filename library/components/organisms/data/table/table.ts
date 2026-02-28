@@ -15,11 +15,13 @@ import { BaseTable } from 'src/app/shared/library/base';
 import { SearchInput } from "../../../molecules";
 import { TableHeader } from "../../../molecules/data/table/table-header/table-header";
 import { TableRow } from "../../../molecules/data/table/table-row/table-row";
-import { EmptyMessage } from "../../../atoms";
+import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-message';
+import { Button } from "../../../atoms/buttons/button/button";
+
 
 @Component({
   selector: 'app-table',
-  imports: [TableModule, FormsModule, IconFieldModule, InputIconModule, FontAwesomeModule, SearchInput, TableHeader, TableRow, EmptyMessage],
+  imports: [TableModule, FormsModule, IconFieldModule, InputIconModule, FontAwesomeModule, SearchInput, TableHeader, TableRow, EmptyMessage, Button],
   templateUrl: './table.html',
   styleUrl: './table.scss',
 })
@@ -35,7 +37,7 @@ export class Table<T> extends BaseTable<T> {
     if (this.addEmptyRows()) {
       const emptyRowsCount =
         (this.dataSourceFilter()?.pagination.pageSize || 10) - (this.data()?.length || 0);
-      if (emptyRowsCount === this.dataSourceFilter()?.pagination.pageSize) {
+      if (emptyRowsCount === this.dataSourceFilter()?.pagination.pageSize && !this.isLoadingData()) {
         return [];
       }
       const emptyRows = Array.from({ length: emptyRowsCount }, () => ({}) as T);
@@ -72,24 +74,7 @@ export class Table<T> extends BaseTable<T> {
       ...this.dataSourceFilter(),
       ...newData,
     });
-    // this.handlePage({
-    //   first: event.first || 0,
-    //   rows: event.rows || 10,
-    // });
-    // this.onLoadData.emit({
-    //   pagination: this.pageStateToPagination({
-    //     first: event.first || 0,
-    //     rows: event.rows || 10,
-    //   }),
-    //   searchTerm: this.searchTerm(),
-    //   sortColumn: event.sortField as keyof T,
-    //   sortDirection: event.sortOrder === 1 ? 'ASC' : 'DESC',
-    // });
   }
-
-  // handleAction(event: ICellEvent<T>) {
-  //   this.onAction.emit(event);
-  // }
 
   isObjectNotEmpty(value: any): boolean {
     return Object.keys(value).length > 0;

@@ -1,7 +1,8 @@
 import { Component, input } from '@angular/core';
 import type { ValidationError } from '@angular/forms/signals';
 import { BaseField } from 'src/app/shared/library/base';
-import { InputErrors, InputLabel } from 'src/app/shared/library/components/atoms';
+import { InputLabel } from '../../other/input-label/input-label';
+import { InputErrors } from '../../other/input-errors/input-errors';
 
 @Component({
   selector: 'app-input',

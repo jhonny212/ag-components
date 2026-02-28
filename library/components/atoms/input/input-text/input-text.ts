@@ -3,8 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
 import { BaseInputField } from 'src/app/shared/library/base';
-import { Input } from '../..';
-
+import { Input } from '../input/input';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-input-text',
@@ -15,6 +15,7 @@ import { Input } from '../..';
 export class InputText extends BaseInputField<string> implements OnDestroy {
   type = input<'text' | 'email' | 'password'>('text');
   debounceTime = input<number>(0);
+  minTextLength = input<number>(3);
 
   valueChange = output<string>();
 
@@ -23,23 +24,25 @@ export class InputText extends BaseInputField<string> implements OnDestroy {
 
   constructor() {
     super();
-    effect((onCleanup) => {
-      const debounce = this.debounceTime();
-      this.subscription?.unsubscribe();
-      this.subscription = this.inputSubject
-        .pipe(debounceTime(debounce), distinctUntilChanged())
-        .subscribe((value) => {
-          this.valueChange.emit(value);
-        });
-      onCleanup(() => {
-        this.subscription?.unsubscribe();
+    const value$ = toObservable(this.value);
+    this.subscription = value$
+      .pipe(debounceTime(this.debounceTime()), distinctUntilChanged())
+      .subscribe((val) => {
+        if ((val?.length || 0) >= this.minTextLength()) {
+          this.valueChange.emit(val || '');
+        } else if (val === '' || val === null || val === undefined) {
+          this.valueChange.emit('');
+        }
       });
-    });
   }
 
   onInputChange(value: string) {
     this.value.set(value);
-    this.inputSubject.next(value);
+    if (this.debounceTime()) {
+      this.inputSubject.next(value);
+    } else {
+      this.valueChange.emit(value);
+    }
   }
 
   ngOnDestroy() {

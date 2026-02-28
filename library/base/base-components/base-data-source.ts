@@ -1,6 +1,6 @@
 import { Component, computed, input, model, output, signal } from '@angular/core';
 import { FilterHelper } from '@core/helper/filter.helper';
-import { IPagedResource } from '@core/interfaces/http/resource.interface';
+import { IPagedResource } from '@lib/core/interfaces/http/resource.interface';
 import { ActionMode } from '@core/types/action-mode.type';
 import { IDataSourceConfig } from '@lib/core/interfaces/data/data-source-config.interface';
 import { IDataSourceFilter } from '@lib/core/interfaces/data/data-source-filter.interface';
@@ -9,6 +9,7 @@ import { ITableAction } from '@lib/core/interfaces/data/table/table-action.inter
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { PaginatorState } from 'primeng/paginator';
 import { TableLazyLoadEvent, TableRowSelectEvent } from 'primeng/table';
+import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   template: '',
@@ -22,6 +23,7 @@ export abstract class BaseDataSource<T> {
   actions = input<ITableAction<T>[]>([]);
   actionMode = input<ActionMode>('buttons');
   resource = input<IPagedResource<T>>();
+  enableReload = input<boolean>(true);
 
   /**
    * On row selection
@@ -32,7 +34,7 @@ export abstract class BaseDataSource<T> {
   /**
    * Other properties
    */
-  loading = input<boolean>(false);
+  loading = input<boolean | undefined>(undefined);
   totalRecords = input<number>(0);
   hasBasicSearch = input<boolean>(false);
   hasPagination = input<boolean>(true);
@@ -46,6 +48,11 @@ export abstract class BaseDataSource<T> {
   onRowSelected = output<TableRowSelectEvent<T>>();
   onLoadData = output<IDataSourceFilter<T>>();
   onAction = output<ICellEvent<T>>();
+
+  /**
+   * Icons
+   */
+  reloadIcon = signal(faRefresh);
 
   /**
    * Computed
@@ -63,9 +70,13 @@ export abstract class BaseDataSource<T> {
     return this.resource()?.value()?.total || this.totalRecords();
   });
 
-  handleAction(action: ICellEvent<T>): void {
-    this.onAction.emit(action);
-  }
+  dataSourceActions = computed(() => {
+    return this.actions().length ? this.actions() : this.dataSourceConfig().actions || [];
+  });
+
+  dataSourceActionMode = computed(() => {
+    return this.dataSourceConfig().actionMode || this.actionMode();
+  });
 
   protected pageStateToPagination(event: PaginatorState): IPagination {
     const pagination = {
@@ -73,6 +84,10 @@ export abstract class BaseDataSource<T> {
       pageSize: event.rows || 10,
     };
     return pagination;
+  }
+
+  handleAction(action: ICellEvent<T>): void {
+    this.onAction.emit(action);
   }
 
   protected tableLazyLoadEventToDataSourceFilter(event: TableLazyLoadEvent): IDataSourceFilter<T> {
@@ -95,5 +110,14 @@ export abstract class BaseDataSource<T> {
       ...prev,
       ...newData,
     }));
+  }
+
+  protected handleReloadData(): void {
+    this.updateDataSourceFilter({
+      ...this.dataSourceFilter(),
+    });
+    this.onLoadData.emit({
+      ...this.dataSourceFilter(),
+    });
   }
 }

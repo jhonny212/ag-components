@@ -1,16 +1,17 @@
 import { Component, inject, input, output, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEllipsis, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { Popover } from 'primeng/popover';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { Button, GridCell } from '../../../../atoms';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { ITableAction } from '@lib/core/interfaces/data/table/table-action.interface';
 import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
+import { Button } from '../../../../atoms/buttons/button/button';
+import { GridCell } from '../../../../atoms/data/grid/grid-cell/grid-cell';
+import { DataAction } from '../../data-action/data-action';
+import { DataActionHelper } from '@lib/core/helpers/data-action.helper';
 
 @Component({
   selector: 'app-grid-row',
-  imports: [GridCell, Button, Popover, FaIconComponent],
+  imports: [GridCell, DataAction],
   templateUrl: './grid-row.html',
   styleUrl: './grid-row.scss',
 })
@@ -24,29 +25,12 @@ export class GridRow<T> {
 
   onAction = output<ICellEvent<T>>();
 
+  actionsHelper = new DataActionHelper<T>(this.data, this.route, this.cellEvents);
+
   handleAction(action: ITableAction<T>) {
-    if (action.routerLink) {
-      const params = action.paramsRender ? action.paramsRender(this.data()) : [];
-      this.route.navigate([action.routerLink, ...params]);
-    } else if (!this.cellEvents().has(action.triggerAction)) {
-      const event = {
-        data: this.data(),
-        columnKey: 'action' as keyof T,
-        action,
-      };
-      this.addCellEvent(action.triggerAction, event);
-      this.onAction.emit(event);
-    } else {
-      const event = this.cellEvents().get(action.triggerAction)!;
+    const event = this.actionsHelper.handleAction(action);
+    if (event) {
       this.onAction.emit(event);
     }
-  }
-
-  private addCellEvent(key: string, event: ICellEvent<T>) {
-    this.cellEvents.update((current) => {
-      const newMap = new Map(current);
-      newMap.set(key, event);
-      return newMap;
-    });
   }
 }

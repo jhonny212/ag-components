@@ -14,7 +14,7 @@
     [rowsPerPageOptions]="[5, 10, 20]"
     [totalRecords]="totalRecords()"
     [value]="dataTableData()"
-    [loading]="loading()"
+    [loading]="isLoadingData()"
     [selectionMode]="enableRowSelection() ? selectionMode() : undefined"
     [(selection)]="selectedProduct"
     [metaKeySelection]="true"
@@ -23,14 +23,27 @@
     (onRowSelect)="handleRowSelected($event)"
     (onLazyLoad)="handleLoadData($event)"
   >
-    @if (hasBasicSearch()) {
+    @if (hasBasicSearch() || enableReload()) {
       <ng-template #caption>
-        <div class="max-w-[300px]">
-          <app-search-input
-            [(value)]="searchTerm"
-            [debounceTime]="600"
-            (valueChange)="handleSearch()"
-          />
+        <div class="toolbar">
+          @if (hasBasicSearch()) {
+            <div class="max-w-[300px]">
+              <app-search-input
+                [(value)]="searchTerm"
+                [debounceTime]="600"
+                (valueChange)="handleSearch()"
+              />
+            </div>
+          }
+          @if (enableReload()) {
+            <app-button
+              tooltip="Recargar datos"
+              [loading]="isLoadingData()"
+              [icon]="reloadIcon()"
+              [rounded]="true"
+              (onClick)="handleReloadData()"
+            />
+          }
         </div>
       </ng-template>
     }
@@ -46,7 +59,7 @@
             [pSelectableRow]="product"
             [columns]="dataSourceConfig().columns"
             [actions]="actions()"
-            [actionMode]="actionMode()"
+            [actionMode]="dataSourceActionMode()"
             [data]="product"
             (onAction)="handleAction($event)"
           ></tr>

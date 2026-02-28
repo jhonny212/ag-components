@@ -1,3 +1,7 @@
+:host{
+  --min-loading-height: 150px;
+}
+
 .ck-card.primary {
   @apply bg-primary-50;
 }
@@ -8,4 +12,8 @@
 
 .card-title {
   @apply text-xl font-semibold px-4 pt-4;
+}
+
+p-skeleton{
+  @apply min-h-[var(--min-loading-height)] h-auto;
 }

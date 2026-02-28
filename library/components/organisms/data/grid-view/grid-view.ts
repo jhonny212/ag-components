@@ -5,11 +5,13 @@ import { TableLazyLoadEvent } from 'primeng/table';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
 import { BaseDataSource } from 'src/app/shared/library/base';
 import { GridCard } from '../../../molecules';
-import { Paginator, EmptyMessage } from "../../../atoms";
+import { Paginator } from '../../../atoms/data/paginator/paginator';
+import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-message';
+import { Button } from "../../../atoms/buttons/button/button";
 
 @Component({
   selector: 'app-grid-view',
-  imports: [GridCard, Paginator, EmptyMessage],
+  imports: [GridCard, Paginator, EmptyMessage, Button],
   templateUrl: './grid-view.html',
   styleUrl: './grid-view.scss',
 })

@@ -2,8 +2,8 @@ import { Component, input, output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconFieldModule } from 'primeng/iconfield';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { InputText } from '../../../atoms';
 import { BaseInputField } from 'src/app/shared/library/base';
+import { InputText } from '../../../atoms/input/input-text/input-text';
 
 @Component({
   selector: 'app-search-input',

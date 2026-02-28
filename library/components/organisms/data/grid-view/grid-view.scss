@@ -1,3 +1,31 @@
 app-paginator {
   @apply flex items-center justify-end;
 }
+
+.view {
+  @apply grid grid-cols-1 gap-4 relative;
+}
+
+.loader {
+  @apply min-h-[200px] w-full border rounded-lg p-4;
+
+  .loader-overlay {
+    @apply absolute inset-0 z-50 flex items-center justify-center bg-white/60 backdrop-blur-[2px];
+  }
+
+  .loader-content {
+    @apply flex flex-col items-center;
+  }
+
+  .spinner {
+    @apply h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-primary-600;
+  }
+
+  .spinner-text {
+    @apply mt-2 text-sm font-medium text-gray-600;
+  }
+}
+
+.toolbar {
+  @apply flex justify-between items-end pl-2;
+}

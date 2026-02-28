@@ -1,5 +1,5 @@
 @for (item of columns(); track $index) {
-  <th
+  <th class="!bg-gray-50"
     [pSortableColumn]="item.header?.sortableField?.toString()"
     [style.width]="item.width"
     [style.min-width]="item.minWidth"
@@ -10,7 +10,7 @@
 
 @if (actions().length) {
   <th
-    class="!text-center !text-gray-600"
+    class="!text-center !text-gray-600 !bg-gray-50"
     [ngStyle]="{
       width: actionMinWidth(),
     }"

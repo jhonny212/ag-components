@@ -1,7 +1,8 @@
 import { Component, input, model, output } from '@angular/core';
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
 import { BaseField } from 'src/app/shared/library/base';
-import { Button, InputText } from '../../../atoms';
+import { Button } from '../../../atoms/buttons/button/button';
+import { InputText } from '../../../atoms/input/input-text/input-text';
 
 @Component({
   selector: 'app-add-input',

@@ -2,9 +2,9 @@ import { Component, computed, input } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ActionMode } from '@core/types/action-mode.type';
 import { CommonModule } from '@angular/common';
-import { TableHeaderCell } from '../../../../atoms';
 import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
 import { ITableAction } from '@lib/core/interfaces/data/table/table-action.interface';
+import { TableHeaderCell } from '../../../../atoms/data/table/table-header-cell/table-header-cell';
 
 @Component({
   selector: 'tr[app-table-header]',

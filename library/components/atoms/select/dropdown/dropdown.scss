@@ -1,0 +1,19 @@
+.actions {
+  @apply flex gap-2 justify-center justify-items-center;
+}
+
+.actions-dropdown {
+  .content {
+    @apply flex justify-center;
+  }
+}
+
+.btn-trigger {
+  button {
+    @apply p-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-700 rounded;
+  }
+
+  fa-icon {
+    @apply mr-2;
+  }
+}

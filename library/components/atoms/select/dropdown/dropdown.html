@@ -1,0 +1,19 @@
+<p-popover #trigger>
+  <ng-template #content>
+    <ol>
+      @for (item of options(); track item.id) {
+        <li class="btn-trigger">
+          <button
+            (click)="handleOptionSelected(item);"
+            [disabled]="!!events()?.get(item.id)?.loading"
+          >
+            @if (item.icon) {
+              <fa-icon [icon]="item.icon"></fa-icon>
+            }
+            {{ item.label }}
+          </button>
+        </li>
+      }
+    </ol>
+  </ng-template>
+</p-popover>

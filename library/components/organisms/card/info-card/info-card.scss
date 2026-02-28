@@ -29,3 +29,11 @@
     @apply text-lg sm:text-2xl font-bold text-gray-600;
   }
 }
+
+.loader {
+  @apply p-4 min-h-[150px] w-full flex flex-col gap-1 justify-center;
+
+  .loader-header {
+    @apply grid grid-cols-[auto_1fr] gap-4 mb-4;
+  }
+}

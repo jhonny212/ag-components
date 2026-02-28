@@ -1,0 +1,12 @@
+<app-dropdown
+  #op
+  [options]="mappedActions()"
+  [events]="cellEvents()"
+  (onOptionSelected)="handleAction($event.value)"
+/>
+<app-button
+  (onClick)="op.handleTriggerClick(false, $event)"
+  [icon]="dotsIcon()"
+  [rounded]="true"
+  severity="info"
+/>

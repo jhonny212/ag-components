@@ -1,14 +1,14 @@
 import { Component, computed, input, OnInit, signal } from '@angular/core';
-import { useScreenSize } from '@core/util/genera.util';
+import { useScreenSize } from '@core/util/general.util';
 import { TableRowSelectEvent } from 'primeng/table';
 import { faGridHorizontal, faTable } from '@fortawesome/free-solid-svg-icons';
 import { PaginatorHelper } from '@core/helper/paginator.helper';
 import { DataSourceHeader } from './data-source-header/data-source-header';
 import { BaseDataSource } from 'src/app/shared/library/base';
 import { GridView } from '../grid-view/grid-view';
-import { Card } from '../../../atoms';
 import { TableCard } from '../../card/table-card/table-card';
 import { IDataSourceFilter } from '@lib/core/interfaces/data/data-source-filter.interface';
+import { Card } from '../../../atoms/other/card/card';
 
 @Component({
   selector: 'app-data-source',
@@ -20,7 +20,7 @@ export class DataSource<T> extends BaseDataSource<T> implements OnInit {
   title = input.required<string>();
   subTitle = input<string>('');
 
-  isTableView = signal(false);
+  isTableView = signal(true);
   firstLoad = signal(false);
 
   tableView = faTable;

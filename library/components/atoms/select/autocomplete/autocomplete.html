@@ -33,7 +33,6 @@
         <div class="flex flex-col">
           @if (labelRender()) {
             <app-render-item [item]="item" [render]="labelRender()" />
-            <!-- <span [innerHTML]="labelRender(item)"></span> -->
           } @else {
             <span>{{ item[labelKey()] }}</span>
           }
