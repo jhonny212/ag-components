@@ -1,12 +1,12 @@
 import { Component, input, output } from '@angular/core';
 import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
 import { ButtonModule, ButtonSeverity } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
+import { Ripple, RippleModule } from 'primeng/ripple';
 import { Tooltip } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-button',
-  imports: [ButtonModule, FontAwesomeModule, RippleModule, Tooltip],
+  imports: [ButtonModule, FontAwesomeModule, Tooltip],
   templateUrl: './button.html',
   styleUrl: './button.scss',
 })

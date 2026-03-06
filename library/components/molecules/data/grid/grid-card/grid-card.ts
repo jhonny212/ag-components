@@ -7,6 +7,7 @@ import { ITableAction } from '@lib/core/interfaces/data/table/table-action.inter
 import { IDataSourceConfig } from '@lib/core/interfaces/data/data-source-config.interface';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { Card } from '../../../../atoms/other/card/card';
+import { useDarkMode } from '@core/util/general.util';
 
 @Component({
   selector: 'app-grid-card',
@@ -36,6 +37,9 @@ export class GridCard<T> {
   isExpanded = computed(() => this.dataSourceConfig().mobileMode === 'card-expanded');
 
   cardColor = computed(() => {
+    if (useDarkMode().isDark()) {
+      return !this.isActive() ? 'primary' : this.dataSourceConfig().color;
+    }
     const color: ColorType = this.isActive() ? 'primary' : this.dataSourceConfig().color;
     return color;
   });

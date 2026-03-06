@@ -13,6 +13,8 @@ import { InputText } from '../../../atoms/input/input-text/input-text';
 })
 export class SearchInput extends BaseInputField<string> {
   debounceTime = input<number>(0);
+  minTextLength = input<number>(3);
+  acceptEmptyString = input<boolean>(true);
 
   searchIcon = faSearch;
 }

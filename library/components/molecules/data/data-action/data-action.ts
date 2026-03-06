@@ -5,6 +5,7 @@ import { IDropdownOption } from '@lib/core/interfaces/select/dropdown-option.int
 import { ITableAction } from '@lib/core/interfaces/data/table/table-action.interface';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { faEllipsis, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { useDarkMode } from '@core/util/general.util';
 
 @Component({
   selector: 'app-data-action',
@@ -31,6 +32,10 @@ export class DataAction<T> {
       return option;
     });
     return dropdownOptions;
+  });
+
+  btnColor = computed(() => {
+    return useDarkMode().isDark() ? 'help' : 'info';
   });
 
   handleAction(action: ITableAction<T>) {

@@ -1,8 +1,9 @@
-<p-paginator
+<p-paginator class="ck-paginator"
   [first]="first()"
   [rows]="rows()"
   [totalRecords]="totalRecords()"
   [showPageLinks]="showPages()"
+  appendTo="body"
   [rowsPerPageOptions]="[5, 10, 20]"
   [showJumpToPageDropdown]="showDropdown()"
   [currentPageReportTemplate]="pageTemplate()"

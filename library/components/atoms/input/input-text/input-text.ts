@@ -16,6 +16,7 @@ export class InputText extends BaseInputField<string> implements OnDestroy {
   type = input<'text' | 'email' | 'password'>('text');
   debounceTime = input<number>(0);
   minTextLength = input<number>(3);
+  acceptEmptyString = input<boolean>(true);
 
   valueChange = output<string>();
 
@@ -30,7 +31,7 @@ export class InputText extends BaseInputField<string> implements OnDestroy {
       .subscribe((val) => {
         if ((val?.length || 0) >= this.minTextLength()) {
           this.valueChange.emit(val || '');
-        } else if (val === '' || val === null || val === undefined) {
+        } else if ((val === '' || val === null || val === undefined) && this.acceptEmptyString()) {
           this.valueChange.emit('');
         }
       });

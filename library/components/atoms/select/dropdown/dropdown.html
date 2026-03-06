@@ -2,7 +2,7 @@
   <ng-template #content>
     <ol>
       @for (item of options(); track item.id) {
-        <li class="btn-trigger">
+        <li pRipple class="btn-trigger">
           <button
             (click)="handleOptionSelected(item);"
             [disabled]="!!events()?.get(item.id)?.loading"

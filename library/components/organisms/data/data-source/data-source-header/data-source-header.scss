@@ -1,5 +1,5 @@
 .title {
-  @apply text-base xs:text-lg lg:text-lg font-bold text-gray-600 dark:text-white flex justify-between;
+  @apply flex justify-between;
 }
 
 .view .active {
@@ -7,5 +7,5 @@
 }
 
 .subtitle {
-  @apply text-sm text-gray-500 dark:text-gray-400 mb-3;
+  @apply  mb-3;
 }

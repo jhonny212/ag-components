@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faTable, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
@@ -9,7 +9,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
   styleUrl: './empty-message.scss',
 })
 export class EmptyMessage {
-  icon = input.required<IconDefinition>();
+  icon = input<IconDefinition>(faTable);
   title = input<string>('No hay datos disponibles');
   message = input<string>('No hay datos disponibles');
 }

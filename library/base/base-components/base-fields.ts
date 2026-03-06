@@ -1,4 +1,4 @@
-import { Component, input, model } from '@angular/core';
+import { Component, input, model, output } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -14,5 +14,11 @@ export abstract class BaseField {
   inputClass = input<string>('');
   icon = input<IconDefinition | undefined>(undefined);
 
+  onClick = output<Event>();
+
   constructor() {}
+
+  handleClick(event: Event) {
+    this.onClick.emit(event);
+  }
 }

@@ -7,5 +7,9 @@
 }
 
 .ck-search-icon {
-  @apply absolute top-3 left-3 text-gray-500;
+  @apply absolute top-[9px] left-3 text-gray-500;
 }
+
+// .ck-search-icon.label {
+//   @apply top-2.5;
+// }

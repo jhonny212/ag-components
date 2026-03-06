@@ -1,12 +1,14 @@
 <p-button
   (click)="handleClick($event)"
-  [class]="class() + ' ck-button'"
+  [class]="class() + ' ck-button relative overflow-hidden '+ 'severity-'+severity()"
   [severity]="severity()"
   [label]="label()"
   [loading]="loading()"
   [disabled]="disable()"
   [rounded]="rounded()"
   [pTooltip]="tooltip()"
+  tooltipPosition="left"
+  [tooltipStyleClass]="'tooltip-'+severity()"
   [class.rounded]="rounded()"
 >
   <ng-template pTemplate="icon">

@@ -1,15 +1,17 @@
 <div class="content" [class.cursor-pointer]="isClickable()" (click)="handleClick()">
   @if (loading()) {
-    <p-card class="ck-card loading">
+    <p-card class="ck-card no-padding">
       <ng-content select="[loading]">
         <p-skeleton width="100%" />
       </ng-content>
     </p-card>
   } @else {
     <p-card
+      pRipple
       [class]="'ck-card ' + color() + ' ' + customColor()"
       [header]="cardTitle()"
       [subheader]="subTitle()"
+      [class.p-ripple-disabled]="!enableRipple()"
     >
       @if (icon()) {
         <ng-template #header>

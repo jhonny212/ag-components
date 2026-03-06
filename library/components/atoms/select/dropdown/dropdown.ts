@@ -3,10 +3,11 @@ import { IDropdownOption } from '@lib/core/interfaces/select/dropdown-option.int
 import { Popover } from 'primeng/popover';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
+import { Ripple } from "primeng/ripple";
 
 @Component({
   selector: 'app-dropdown',
-  imports: [Popover, FaIconComponent],
+  imports: [Popover, FaIconComponent, Ripple],
   templateUrl: './dropdown.html',
   styleUrl: './dropdown.scss',
 })

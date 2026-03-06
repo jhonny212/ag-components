@@ -7,6 +7,7 @@ import { Card } from '../../../atoms/other/card/card';
 import { SkeletonInput } from '../../../atoms/skeleton/skeleton-input/skeleton-input';
 import { SkeletonIcon } from '../../../atoms/skeleton/skeleton-icon/skeleton-icon';
 import { SkeletonText } from '../../../atoms/skeleton/skeleton-text/skeleton-text';
+import { Ripple } from 'primeng/ripple';
 
 @Component({
   selector: 'app-info-card',

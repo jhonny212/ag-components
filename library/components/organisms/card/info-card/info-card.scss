@@ -15,11 +15,15 @@
 }
 
 .title {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-2 dark:text-ck-neutral-200;
 
   span {
     @apply text-base sm:text-lg font-semibold;
   }
+}
+
+.ck-card p {
+  @apply dark:text-ck-neutral-300/90;
 }
 
 .content {

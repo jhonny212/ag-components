@@ -13,12 +13,14 @@
     <input
       pInputText
       [id]="field()"
+      autocomplete="off"
       [class]="'ck-input-text ' + inputClass()"
       [placeholder]="placeholder()"
       [type]="type()"
       [ngModel]="value()"
       (ngModelChange)="onInputChange($event)"
       (blur)="touched.set(true)"
+      (click)="handleClick($event)"
     />
   </content>
 </app-input>

@@ -4,10 +4,11 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { CardModule } from 'primeng/card';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { SkeletonModule } from 'primeng/skeleton';
+import { Ripple } from 'primeng/ripple';
 
 @Component({
   selector: 'app-card',
-  imports: [CardModule, FaIconComponent, SkeletonModule],
+  imports: [CardModule, FaIconComponent, SkeletonModule, Ripple],
   templateUrl: './card.html',
   styleUrl: './card.scss',
 })
@@ -16,9 +17,10 @@ export class Card {
   subTitle = input<string | undefined>('');
   loading = input<boolean | undefined>(false);
   isClickable = input<boolean>(false);
-  color = input<ColorType>();
+  color = input<ColorType>("light");
   icon = input<IconDefinition>();
   customColor = input<string | undefined>('');
+  enableRipple = input<boolean>(false);
 
   onClick = output<void>();
 

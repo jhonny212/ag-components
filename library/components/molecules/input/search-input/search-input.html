@@ -1,13 +1,16 @@
-<div class="ck-searhc">
+<div class="ck-search" (click)="handleClick($event)">
   <p-iconfield iconPosition="right">
     @if (searchIcon) {
-      <div class="ck-search-icon">
+      <div class="ck-search-icon" [class.label]="label()">
         <fa-icon [icon]="searchIcon" />
       </div>
     }
-    <app-input-text inputClass="!px-10"
+    <app-input-text
+      inputClass="!px-10"
       [placeholder]="placeholder() || 'Buscar'"
       [debounceTime]="debounceTime()"
+      [minTextLength]="minTextLength()"
+      [acceptEmptyString]="acceptEmptyString()"
       [(value)]="value"
     />
   </p-iconfield>

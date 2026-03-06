@@ -1,7 +1,7 @@
 <div class="breadcrumb">
   <p-breadcrumb [model]="items() || []" [home]="home">
     <ng-template pTemplate="item" let-item>
-      <div class="content" [pTooltip]="item.label" tooltipPosition="top">
+      <div class="content" [pTooltip]="item.label" tooltipPosition="top" tooltipStyleClass="tooltip-info">
         @if (item.faIcon) {
           <span (click)="handleRedirect(item)">
             <fa-icon class="cursor-pointer" [icon]="item.faIcon" />

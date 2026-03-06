@@ -19,7 +19,7 @@ export class Breadcrumb {
 
   items = input<MenuItem[]>();
 
-  home?: IBreadcrumb = { faIcon: faHome };
+  home?: IBreadcrumb = { faIcon: faHome, routerLink: '/', label: 'Inicio' };
 
   handleRedirect(item: MenuItem) {
     if (item.routerLink) {

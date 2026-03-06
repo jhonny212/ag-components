@@ -1,19 +1,13 @@
-:host{
+:host {
   --min-loading-height: 150px;
+  --radius: 6px;
 }
 
-.ck-card.primary {
-  @apply bg-primary-50;
+
+p-skeleton {
+  @apply min-h-[var(--min-loading-height)] h-auto rounded-base;
 }
 
-.ck-card.gray {
-  @apply bg-gray-50;
-}
-
-.card-title {
-  @apply text-xl font-semibold px-4 pt-4;
-}
-
-p-skeleton{
-  @apply min-h-[var(--min-loading-height)] h-auto;
+.p-card {
+  border-radius: var(--radius) !important;
 }

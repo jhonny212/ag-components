@@ -18,6 +18,8 @@
     [selectionMode]="enableRowSelection() ? selectionMode() : undefined"
     [(selection)]="selectedProduct"
     [metaKeySelection]="true"
+    paginatorDropdownAppendTo="body"
+    paginatorStyleClass="ck-paginator"
     [dataKey]="primaryKey()?.toString()"
     (onPage)="handlePage($event)"
     (onRowSelect)="handleRowSelected($event)"
