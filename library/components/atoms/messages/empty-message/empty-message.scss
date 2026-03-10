@@ -1,0 +1,19 @@
+:host {
+  --ck-color: #6b7280;
+}
+
+.empty {
+  @apply w-full h-full flex flex-col items-center justify-center gap-4 text-[var(--ck-color)];
+
+  .icon {
+    @apply text-5xl opacity-30;
+  }
+
+  .title {
+    @apply text-center text-base font-semibold;
+  }
+
+  .message {
+    @apply text-center text-sm;
+  }
+}

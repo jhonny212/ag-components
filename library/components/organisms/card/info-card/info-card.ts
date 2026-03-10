@@ -8,6 +8,7 @@ import { SkeletonInput } from '../../../atoms/skeleton/skeleton-input/skeleton-i
 import { SkeletonIcon } from '../../../atoms/skeleton/skeleton-icon/skeleton-icon';
 import { SkeletonText } from '../../../atoms/skeleton/skeleton-text/skeleton-text';
 import { Ripple } from 'primeng/ripple';
+import { ColorType } from '@core/types/color.type';
 
 @Component({
   selector: 'app-info-card',
@@ -20,6 +21,7 @@ export class InfoCard {
   subTitle = input<string>();
   icon = input<IconDefinition>();
   info = input<string>();
-  severity = input<ButtonSeverity>();
+  severity = input<ColorType>();
+  cursor = input<boolean>(false);
   loading = input<boolean | undefined>(false);
 }
