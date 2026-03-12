@@ -1,13 +1,13 @@
 import { Component, effect, ElementRef, input, output, signal, viewChild } from '@angular/core';
 import { IDropdownOption } from '@lib/core/interfaces/select/dropdown-option.interface';
 import { Popover } from 'primeng/popover';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { Ripple } from "primeng/ripple";
+import { IconFa } from "../../other/icon-fa/icon-fa";
 
 @Component({
   selector: 'app-dropdown',
-  imports: [Popover, FaIconComponent, Ripple],
+  imports: [Popover,Ripple, IconFa],
   templateUrl: './dropdown.html',
   styleUrl: './dropdown.scss',
 })

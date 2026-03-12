@@ -9,10 +9,11 @@ import { SkeletonIcon } from '../../../atoms/skeleton/skeleton-icon/skeleton-ico
 import { SkeletonText } from '../../../atoms/skeleton/skeleton-text/skeleton-text';
 import { Ripple } from 'primeng/ripple';
 import { ColorType } from '@core/types/color.type';
+import { IconFa } from "../../../atoms/other/icon-fa/icon-fa";
 
 @Component({
   selector: 'app-info-card',
-  imports: [CardModule, FontAwesomeModule, Card, SkeletonInput, SkeletonIcon, SkeletonText],
+  imports: [CardModule, FontAwesomeModule, Card, SkeletonInput, SkeletonIcon, SkeletonText, IconFa],
   templateUrl: './info-card.html',
   styleUrl: './info-card.scss',
 })

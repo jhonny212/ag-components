@@ -1,11 +1,10 @@
 import { Component, input, model } from '@angular/core';
 import { faGridHorizontal, faTable } from '@fortawesome/free-solid-svg-icons';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { Ripple } from "primeng/ripple";
+import { IconFa } from '../../../../atoms/other/icon-fa/icon-fa';
 
 @Component({
   selector: 'app-data-source-header',
-  imports: [FaIconComponent, Ripple],
+  imports: [IconFa],
   templateUrl: './data-source-header.html',
   styleUrl: './data-source-header.scss',
 })

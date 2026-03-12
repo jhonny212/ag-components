@@ -10,6 +10,7 @@
         [severity]="item.color"
         [rounded]="true"
         [icon]="item.faIcon"
+        size="small"
         [loading]="!!cellEvents().get(item.triggerAction)?.loading"
         [tooltip]="item.label"
         (onClick)="handleAction(item)"

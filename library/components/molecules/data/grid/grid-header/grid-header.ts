@@ -8,12 +8,13 @@ import { Component, computed, input } from '@angular/core';
 })
 export class GridHeader<T> {
   header = input<keyof T>();
-  headerRender = input<(item: T) => string>();
+  headerRender = input<(item: T, isActive?: boolean) => string>();
   item = input.required<T>();
+  isActive = input(false);
 
   headerText = computed(() => {
     if (this.headerRender()) {
-      return this.headerRender()!(this.item());
+      return this.headerRender()!(this.item(), this.isActive());
     }
     return this.header() as string;
   });

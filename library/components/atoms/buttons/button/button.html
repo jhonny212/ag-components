@@ -1,6 +1,13 @@
 <p-button
   (click)="handleClick($event)"
-  [class]="class() + ' ck-button relative overflow-hidden '+ 'severity-'+severity()"
+  [class]="
+    customClass() +
+    ' ck-button relative overflow-hidden ' +
+    'severity-' +
+    severity() +
+    ' size-' +
+    size()
+  "
   [severity]="severity()"
   [label]="label()"
   [loading]="loading()"
@@ -8,12 +15,9 @@
   [rounded]="rounded()"
   [pTooltip]="tooltip()"
   tooltipPosition="left"
-  [tooltipStyleClass]="'tooltip-'+severity()"
-  [class.rounded]="rounded()"
+  [tooltipStyleClass]="'tooltip-' + severity()"
 >
   <ng-template pTemplate="icon">
-    @if (icon()) {
-      <fa-icon [icon]="icon()" />
-    }
+    <app-icon-fa [icon]="icon()" [color]="severity()" />
   </ng-template>
 </p-button>

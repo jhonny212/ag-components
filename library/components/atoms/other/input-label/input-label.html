@@ -1,6 +1,6 @@
 <label class="ck-font text-gray-800 font-normal dark:text-ck-neutral-300" [for]="field()">
   @if (icon()) {
-    <fa-icon class="text-zinc-500" [icon]="icon()"></fa-icon>
+    <app-icon-fa [icon]="icon()" />
   }
   {{ label() }}
   @if (hasRequired()) {

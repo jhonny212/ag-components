@@ -2,12 +2,17 @@
   <div class="title ck-title-medium" [class.mb-3]="!subTitle()">
     <span>{{ title() }}</span>
     <div class="view">
-      <span pRipple [class.active]="isTableView()" (click)="handleViewChange(true)">
-        <fa-icon class="cursor-pointer" [icon]="tableView" />
-      </span>
-      <span pRipple [class.active]="!isTableView()" (click)="handleViewChange(false)">
-        <fa-icon class="cursor-pointer ml-2" [icon]="cardView" />
-      </span>
+      <app-icon-fa
+        [class.active]="isTableView()"
+        [icon]="tableView"
+        (onClick)="handleViewChange(true)"
+      />
+      <app-icon-fa
+        class="cursor-pointer ml-2"
+        [class.active]="!isTableView()"
+        [icon]="cardView"
+        (onClick)="handleViewChange(false)"
+      />
     </div>
   </div>
   @if (subTitle()) {

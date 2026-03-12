@@ -8,7 +8,7 @@
             [disabled]="!!events()?.get(item.id)?.loading"
           >
             @if (item.icon) {
-              <fa-icon [icon]="item.icon"></fa-icon>
+              <app-icon-fa [icon]="item.icon" />
             }
             {{ item.label }}
           </button>

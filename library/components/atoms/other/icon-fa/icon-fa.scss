@@ -1,0 +1,31 @@
+.ck-icon-fa.danger {
+  @apply text-danger-500 dark:text-danger-100;
+}
+
+.ck-icon-fa.help {
+  @apply text-help-500 dark:text-help-200;
+}
+
+.ck-icon-fa {
+
+  &.ripple {
+    @apply h-9 w-9 min-h-9 min-w-9 rounded-full flex items-center justify-center cursor-pointer;
+  }
+
+  &.primary {
+    @apply text-primary-200 dark:text-primary-100;
+
+    &.ripple {
+      @apply bg-primary-100;
+      @apply text-primary-700/90 dark:text-primary-600;
+    }
+  }
+
+  &.danger {
+    @apply text-danger-500 dark:text-danger-100;
+  }
+
+  &.help {
+    @apply text-help-500 dark:text-help-200;
+  }
+}

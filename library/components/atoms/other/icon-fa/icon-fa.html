@@ -1,0 +1,11 @@
+@if (icon()) {
+  <span
+    pRipple
+    class="ck-icon-fa + {{ color() }}"
+    [class.ripple]="enableRipple()"
+    [class.p-ripple-disabled]="!enableRipple()"
+    (click)="handleClick($event)"
+  >
+    <fa-icon [icon]="icon()!" />
+  </span>
+}

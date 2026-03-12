@@ -7,10 +7,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RedirectHelper } from '@core/helper/redirect.helper';
 import { TooltipModule } from 'primeng/tooltip';
 import { IBreadcrumb } from '@lib/core/interfaces/routing/breadcrumb.interface';
+import { IconFa } from "../icon-fa/icon-fa";
 
 @Component({
   selector: 'app-breadcrumb',
-  imports: [BreadcrumbModule, RouterModule, FontAwesomeModule, TooltipModule],
+  imports: [BreadcrumbModule, RouterModule, FontAwesomeModule, TooltipModule, IconFa],
   templateUrl: './breadcrumb.html',
   styleUrl: './breadcrumb.scss',
 })

@@ -7,7 +7,7 @@ import { ActionMode } from '@core/types/action-mode.type';
 export interface IDataSourceConfig<T> {
   columns: IColumn<T>[];
   header?: keyof T;
-  headerRender?: (item: T) => string;
+  headerRender?: (item: T, isSelected?: boolean) => string;
   mobileMode?: DataSourceView;
   key?: keyof T;
   class?: string;

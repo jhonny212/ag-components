@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { IconFa } from '../icon-fa/icon-fa';
 
 @Component({
   selector: 'app-input-label',
-  imports: [FaIconComponent],
+  imports: [IconFa],
   templateUrl: './input-label.html',
   styleUrl: './input-label.scss',
 })
