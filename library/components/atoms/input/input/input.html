@@ -13,7 +13,7 @@
     @if (help()) {
       <small id="field-help">{{ help() }}</small>
     }
-    @if (touched() && invalid()) {
+    @if (touched() && invalid() && !hasRequired()) {
       <app-input-errors [errors]="errors()" [hasRequired]="hasRequired()" />
     }
   </div>

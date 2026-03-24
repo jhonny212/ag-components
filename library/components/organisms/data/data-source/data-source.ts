@@ -30,10 +30,6 @@ export class DataSource<T> extends BaseDataSource<T> implements OnInit {
 
   isTableViewSelected = computed(() => this.isTableView());
 
-  dataSourceItems = computed(() => {
-    return this.resource()?.value()?.data || this.data() || [];
-  });
-
   ngOnInit(): void {
     setTimeout(() => {
       if (!this.isTableView()) {

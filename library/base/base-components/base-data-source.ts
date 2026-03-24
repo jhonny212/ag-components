@@ -58,7 +58,10 @@ export abstract class BaseDataSource<T> {
    * Computed
    */
 
-  tableData = computed(() => {
+  dataSourceData = computed(() => {
+    if (this.resource()?.error() !== undefined) {
+      return [];
+    }
     return this.resource()?.value()?.data || this.data() || [];
   });
 
@@ -67,7 +70,10 @@ export abstract class BaseDataSource<T> {
   });
 
   totalItems = computed(() => {
-    return this.resource()?.value()?.total || this.totalRecords();
+    if (this.resource()?.error() !== undefined) {
+      return 0;
+    }
+    return this.resource()?.value()?.totalRecords || this.totalRecords();
   });
 
   dataSourceActions = computed(() => {

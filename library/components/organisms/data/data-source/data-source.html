@@ -12,7 +12,7 @@
         <app-grid-view
           class="mt-5"
           [(dataSourceFilter)]="dataSourceFilter"
-          [data]="tableData()"
+          [data]="dataSourceData()"
           [totalRecords]="totalItems()"
           [actions]="actions()"
           [loading]="isLoadingData()"
@@ -32,7 +32,7 @@
     [dataSourceConfig]="dataSourceConfig()"
     [actionMode]="actionMode()"
     [loading]="isLoadingData()"
-    [data]="tableData()"
+    [data]="dataSourceData()"
     [totalRecords]="totalItems()"
     [primaryKey]="primaryKey()"
     [actions]="actions()"

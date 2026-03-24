@@ -17,6 +17,7 @@
       [filter]="!!filterBy()"
       [filterBy]="filterBy()?.toString()"
       [showClear]="showClear()"
+      [invalid]="hasErrors()"
       appendTo="body"
       panelStyleClass="ck-select"
       [placeholder]="placeholder() || 'Seleccionar'"

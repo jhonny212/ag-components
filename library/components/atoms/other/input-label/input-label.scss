@@ -1,0 +1,9 @@
+.label {
+  @apply text-gray-800 font-normal dark:text-ck-neutral-300 relative truncate;
+  // break-words
+  text-overflow: ellipsis;
+}
+
+.asterisk {
+  @apply text-danger-500 text-xl absolute -top-1 -right-2;
+}

@@ -3,16 +3,26 @@ export interface IBaseResponse {
   message: string[] | string;
 }
 
+export interface IResponse<T> extends IBaseResponse {
+  data: T;
+}
+
 export interface IPagedResponse<T> extends IBaseResponse {
   data: T[];
   pageSize: number;
   pageCount: number;
-  page: number;
+  pageNumber: number;
   success: boolean;
   message: string;
-  total: number;
+  totalRecords: number;
 }
 
-export interface IResponse<T> extends IBaseResponse {
-  data: T;
+export interface IErrorResponse {
+  success: boolean;
+  message: string[] | string;
+  errors?: Record<string, string[]>;
+}
+
+export interface IFileResponse extends IResponse<Blob> {
+  filename: string;
 }

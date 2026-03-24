@@ -1,0 +1,25 @@
+<div class="ck-stepper">
+  <p-stepper [(value)]="activeIndex" class="basis-[50rem]">
+    <p-step-list>
+      @for (item of steps(); track item.id) {
+        <p-step [value]="item.id">{{ item.label }}</p-step>
+      }
+    </p-step-list>
+    <p-step-panels>
+      @for (item of steps(); track item.id; let i = $index) {
+        <p-step-panel [value]="item.id">
+          <ng-template #content>
+            @if (templateMap().get(item.id); as tpl) {
+              <ng-container [ngTemplateOutlet]="tpl" />
+            }
+            <app-stepper-footer
+              [isFirst]="isFirst()"
+              [isLast]="isLast()"
+              [(activeIndex)]="activeIndex"
+            />
+          </ng-template>
+        </p-step-panel>
+      }
+    </p-step-panels>
+  </p-stepper>
+</div>

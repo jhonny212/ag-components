@@ -1,9 +1,9 @@
-<label class="ck-font text-gray-800 font-normal dark:text-ck-neutral-300" [for]="field()">
+<label class="ck-font label" [for]="field()">
   @if (icon()) {
     <app-icon-fa [icon]="icon()" />
   }
   {{ label() }}
   @if (hasRequired()) {
-    <span class="text-danger-500 text-xl">*</span>
+    <span class="asterisk">*</span>
   }
 </label>

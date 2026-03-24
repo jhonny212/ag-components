@@ -17,6 +17,10 @@ export abstract class BaseInputField<T> extends BaseField implements FormValueCo
     return this.errors().some((error) => error.kind === 'required') && this.showRequired();
   });
 
+  hasErrors = computed(() => {
+    return this.touched() && this.invalid();
+  });
+
   handleChange(value: T | null) {
     this.value.set(value);
   }

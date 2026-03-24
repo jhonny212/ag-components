@@ -20,17 +20,19 @@
         (onPage)="handlePageChange($event)"
       />
     </div>
-    @for (item of data(); track $index) {
-      <app-grid-card
-        class="px-2"
-        [selectedItem]="selectedItem()"
-        [item]="item"
-        [dataSourceConfig]="dataSourceConfig()"
-        [actions]="dataSourceActions()"
-        (onClick)="handleClick($event)"
-        (onAction)="handleAction($event)"
-      />
-    }
+    <div class="view-content">
+      @for (item of data(); track $index) {
+        <app-grid-card
+          class="px-2"
+          [selectedItem]="selectedItem()"
+          [item]="item"
+          [dataSourceConfig]="dataSourceConfig()"
+          [actions]="dataSourceActions()"
+          (onClick)="handleClick($event)"
+          (onAction)="handleAction($event)"
+        />
+      }
+    </div>
   } @else {
     <app-empty-message [icon]="emptyIcon" title="Sin registros" />
   }

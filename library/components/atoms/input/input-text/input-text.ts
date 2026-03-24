@@ -1,4 +1,4 @@
-import { Component, computed, effect, input, model, OnDestroy, output } from '@angular/core';
+import { Component, input, OnDestroy, output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
@@ -50,4 +50,9 @@ export class InputText extends BaseInputField<string> implements OnDestroy {
     this.subscription?.unsubscribe();
     this.inputSubject.complete();
   }
+
+  // handleClick(event: Event) {
+  //   console.log("EMITIENDO DESDE ACA");
+  //   this.onClick.emit(event);
+  // }
 }

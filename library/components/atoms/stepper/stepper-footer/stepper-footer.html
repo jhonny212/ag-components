@@ -1,0 +1,18 @@
+<div class="footer">
+  <app-button
+    tooltip="Anterior"
+    [disable]="isFirst()"
+    [icon]="prevIcon()"
+    [rounded]="true"
+    size="small"
+    (onClick)="handlePrev()"
+  />
+  <app-button
+    tooltip="Siguiente"
+    [disable]="isLast()"
+    [icon]="nextIcon()"
+    [rounded]="true"
+    size="small"
+    (onClick)="handleNext()"
+  />
+</div>
