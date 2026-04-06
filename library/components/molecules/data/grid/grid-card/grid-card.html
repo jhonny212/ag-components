@@ -39,7 +39,12 @@
         </p-accordion-panel>
       </p-accordion>
     } @else {
-      <app-grid-row [columns]="dataSourceConfig().columns" [data]="item()" />
+      <app-grid-row
+        [columns]="dataSourceConfig().columns"
+        [actions]="actions()"
+        [data]="item()"
+        (onAction)="handleAction($event)"
+      />
     }
   </content>
 </app-card>

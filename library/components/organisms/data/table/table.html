@@ -31,7 +31,7 @@
       <ng-template #caption>
         <div class="toolbar" [class.flex-row-reverse]="enableReload() && !hasBasicSearch()">
           @if (hasBasicSearch()) {
-            <div class="max-w-[300px]">
+            <div class="max-w-[300px] mr-4 xs:mr-0">
               <app-search-input
                 [(value)]="searchTerm"
                 [debounceTime]="600"
