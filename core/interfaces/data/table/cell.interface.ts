@@ -1,4 +1,4 @@
-import { TypeDataCell } from '@lib/core/types/data-cell.type';
+import { CellComponent, TypeDataCell } from '@lib/core/types/data-cell.type';
 
 export interface IDataCell<T> {
   field?: keyof T;
@@ -7,4 +7,5 @@ export interface IDataCell<T> {
   styleClass?: string;
   format?: (value: T) => any;
   disable?: (value: any) => boolean;
+  component?: (row: T) => CellComponent;
 }

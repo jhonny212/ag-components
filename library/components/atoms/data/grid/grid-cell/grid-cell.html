@@ -3,5 +3,9 @@
   [class.border-b]="!isLast()"
 >
   <p>{{ header() }}</p>
-  <p class="font-bold" [innerHTML]="value()"></p>
+  @if (!isComponent()) {
+    <p class="font-bold" [innerHTML]="value()"></p>
+  } @else {
+    <app-cell-component [column]="column()" [rowValue]="rowValue()" />
+  }
 </div>

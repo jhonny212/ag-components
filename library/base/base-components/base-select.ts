@@ -10,5 +10,4 @@ export abstract class BaseSelect<T> extends BaseInputField<T> {
   labelRender = input<(item: T) => string>();
   onSelect = output<T>();
   showClear = input<boolean>(false);
-
 }

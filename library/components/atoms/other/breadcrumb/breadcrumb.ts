@@ -8,6 +8,7 @@ import { RedirectHelper } from '@core/helper/redirect.helper';
 import { TooltipModule } from 'primeng/tooltip';
 import { IBreadcrumb } from '@lib/core/interfaces/routing/breadcrumb.interface';
 import { IconFa } from "../icon-fa/icon-fa";
+import { ROUTES } from '@core/constants/routing/routes.constant';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -20,7 +21,7 @@ export class Breadcrumb {
 
   items = input<MenuItem[]>();
 
-  home?: IBreadcrumb = { faIcon: faHome, routerLink: '/', label: 'Inicio' };
+  home?: IBreadcrumb = { faIcon: faHome, routerLink: ROUTES.home.routerLink, label: 'Inicio' };
 
   handleRedirect(item: MenuItem) {
     if (item.routerLink) {

@@ -1,13 +1,51 @@
 :host {
   --min-loading-height: 150px;
   --radius: 6px;
+  --padding: 1rem;
+  --height: auto;
 }
-
 
 p-skeleton {
   @apply min-h-[var(--min-loading-height)] h-auto rounded-base;
 }
 
-.p-card {
-  border-radius: var(--radius) !important;
+.ck-card {
+  @apply w-full h-full rounded-base p-[var(--padding)] bg-transparent shadow-base;
+}
+
+.title {
+  @apply ck-title-medium;
+}
+
+.subtitle {
+  @apply ck-subtitle;
+}
+
+.content {
+  @apply h-[var(--height)];
+}
+
+// Variants
+.ck-card.light {
+  @apply bg-ck-neutral-50 dark:bg-ck-neutral-800;
+
+  .p-card-title {
+    @apply dark:text-ck-neutral-300;
+  }
+}
+
+.ck-card.primary {
+  @apply bg-primary-50 dark:bg-primary-300;
+}
+
+.ck-card.neutral {
+  @apply bg-primary-50 dark:bg-ck-neutral-900;
+}
+
+.ck-card.gray {
+  @apply bg-gray-50 dark:bg-gray-200;
+}
+
+.card-title {
+  @apply text-xl font-semibold px-4 pt-4;
 }

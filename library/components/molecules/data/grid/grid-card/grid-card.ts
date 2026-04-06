@@ -38,9 +38,9 @@ export class GridCard<T> {
 
   cardColor = computed(() => {
     if (useDarkMode().isDark()) {
-      return !this.isActive() ? 'primary' : this.dataSourceConfig().color;
+      return !this.isActive() ? 'neutral' : this.dataSourceConfig().color;
     }
-    const color: ColorType = this.isActive() ? 'primary' : this.dataSourceConfig().color;
+    const color: ColorType = this.isActive() ? 'primary' : this.dataSourceConfig().color || 'neutral';
     return color;
   });
 

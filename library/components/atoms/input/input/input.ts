@@ -3,6 +3,7 @@ import type { ValidationError } from '@angular/forms/signals';
 import { BaseField } from 'src/app/shared/library/base';
 import { InputLabel } from '../../other/input-label/input-label';
 import { InputErrors } from '../../other/input-errors/input-errors';
+import { PositionType } from '@lib/core/types/position.type';
 
 @Component({
   selector: 'app-input',

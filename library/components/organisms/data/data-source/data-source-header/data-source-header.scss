@@ -1,15 +1,16 @@
 .title {
-  @apply flex justify-between;
+  @apply flex justify-between ck-title-medium ck-base-primary-color;
 }
 
 .view {
-  @apply cursor-pointer;
+  @apply cursor-pointer ck-lower-primary-color;
 }
 
 .view .active {
-  @apply text-primary-500;
+  @apply text-primary-400;
 }
 
 .subtitle {
-  @apply mb-3;
+  @apply mb-3 ck-text-base;
+  @apply dark:text-primary-100;
 }

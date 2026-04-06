@@ -1,0 +1,7 @@
+.top {
+  @apply flex-col;
+}
+
+.right {
+  @apply flex-row-reverse gap-2;
+}

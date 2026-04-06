@@ -18,9 +18,4 @@ export class SearchInput extends BaseInputField<string> {
   acceptEmptyString = input<boolean>(true);
 
   searchIcon = faSearch;
-
-  // handleClick(event: Event) {
-  //   console.log('EMITIENDO DESDE ACA', event);
-  //   this.onClick.emit(event);
-  // }
 }

@@ -24,6 +24,7 @@ export abstract class BaseDataSource<T> {
   actionMode = input<ActionMode>('buttons');
   resource = input<IPagedResource<T>>();
   enableReload = input<boolean>(true);
+  serverSide = input<boolean>(true);
 
   /**
    * On row selection

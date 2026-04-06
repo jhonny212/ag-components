@@ -1,31 +1,24 @@
 <div class="content" [class.cursor-pointer]="isClickable()" (click)="handleClick()">
   @if (loading()) {
-    <p-card class="ck-card no-padding">
-      <ng-content select="[loading]">
-        <p-skeleton width="100%" />
-      </ng-content>
-    </p-card>
+    <p-skeleton width="100%" />
   } @else {
-    <p-card
+    <div
       pRipple
       [class]="'ck-card ' + color() + ' ' + customColor()"
-      [header]="cardTitle()"
-      [subheader]="subTitle()"
       [class.p-ripple-disabled]="!enableRipple()"
     >
-      @if (icon()) {
-        <ng-template #header>
-          <h2 class="card-title">
-            <app-icon-fa [icon]="icon()" />
-            {{ title() }}
-          </h2>
-        </ng-template>
-      } @else {
+      <div class="header">
         <ng-content select="header">
-          <ng-template #header> </ng-template>
+          <div class="title">
+            @if (icon()) {
+              <app-icon-fa [icon]="icon()" />
+            }
+            <div>{{ title() }}</div>
+          </div>
+          <div class="sub-title">{{ subTitle() }}</div>
         </ng-content>
-      }
+      </div>
       <ng-content select="content"> </ng-content>
-    </p-card>
+    </div>
   }
 </div>

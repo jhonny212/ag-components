@@ -1,7 +1,4 @@
 <div class="card">
-  <!-- [sortField]="dataSourceFilter().sortColumn?.toString()"
-    [sortOrder]="dataSourceFilter().sortDirection === 'ASC' ? 1 : -1"
-     -->
   <p-table
     #dtTable
     stripedRows
@@ -9,7 +6,7 @@
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
     [globalFilterFields]="['name']"
     [showCurrentPageReport]="true"
-    [lazy]="true"
+    [lazy]="serverSide()"
     [paginator]="hasPagination()"
     [rows]="dataSourceFilter().pagination.pageSize"
     [rowsPerPageOptions]="[5, 10, 20]"
@@ -22,9 +19,13 @@
     paginatorDropdownAppendTo="body"
     paginatorStyleClass="ck-paginator"
     [dataKey]="primaryKey()?.toString()"
+    [filterDelay]="0"
     (onPage)="handlePage($event)"
     (onRowSelect)="handleRowSelected($event)"
     (onLazyLoad)="handleLoadData($event)"
+    [expandedRowKeys]="expandedRows"
+    (onRowExpand)="handleRowExpanded($event)"
+    (onRowCollapse)="handleRowCollapsed($event)"
   >
     @if (hasBasicSearch() || enableReload()) {
       <ng-template #caption>
@@ -35,7 +36,7 @@
                 [(value)]="searchTerm"
                 [debounceTime]="600"
                 [acceptEmptyString]="true"
-                (valueChange)="handleSearch()"
+                (valueChange)="handleSearch($event)"
               />
             </div>
           }
@@ -43,7 +44,7 @@
             <app-button
               tooltip="Recargar datos"
               size="small"
-              [loading]="isLoadingData()"
+              [loading]="!!isLoadingData()"
               [icon]="reloadIcon()"
               [rounded]="true"
               (onClick)="handleReloadData()"
@@ -53,16 +54,18 @@
       </ng-template>
     }
     <ng-template #header>
-      <tr app-table-header [columns]="dataSourceConfig().columns" [actions]="actions()"></tr>
+      <tr app-table-header [columns]="dataTableColumns()" [actions]="actions()"></tr>
     </ng-template>
     @if (dataTableData().length) {
-      <ng-template #body let-product>
+      <ng-template #body let-product let-expanded="expanded">
         @if (isObjectNotEmpty(product)) {
           <tr
-            [pSelectableRow]="product"
             app-table-row
+            [isExpanded]="expanded"
+            [expandableRows]="expandableRows()"
             [pSelectableRow]="product"
-            [columns]="dataSourceConfig().columns"
+            [pSelectableRow]="product"
+            [columns]="dataTableColumns()"
             [actions]="actions()"
             [actionMode]="dataSourceActionMode()"
             [data]="product"
@@ -71,7 +74,7 @@
         } @else {
           <!--start: Render empty state when there are no records -->
           <tr>
-            @for (item of dataSourceConfig().columns; track $index) {
+            @for (item of dataTableColumns(); track $index) {
               <td>&nbsp;</td>
             }
             @if (actions().length) {
@@ -84,7 +87,7 @@
     }
     <ng-template #emptymessage>
       <tr>
-        <td [colSpan]="dataSourceConfig().columns.length + (actions().length ? 1 : 0)">
+        <td [colSpan]="dataTableColumns().length + (actions().length ? 1 : 0)">
           <app-empty-message
             class="min-h-[300px] flex items-center justify-center"
             title="Datos vacíos"
@@ -92,6 +95,10 @@
           />
         </td>
       </tr>
+    </ng-template>
+    <ng-template #expandedrow let-data>
+      <ng-container *ngTemplateOutlet="expandedRowTemplate(); context: { $implicit: data }">
+      </ng-container>
     </ng-template>
   </p-table>
 </div>

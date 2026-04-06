@@ -1,0 +1,26 @@
+<div class="content flex">
+  @switch (column().data.type) {
+    @case ('button') {
+      @if (buttonComponentDef(); as btn) {
+        <app-button
+          [label]="btn.inputs?.label"
+          [size]="btn.inputs?.size ?? 'medium'"
+          [loading]="btn.inputs?.loading"
+          [severity]="btn.inputs?.severity"
+          (onClick)="btn.outputs?.onClick($event)"
+        />
+      }
+    }
+    @case ('checkbox') {
+      @if (checkboxDef(); as checkbox) {
+        <app-checkbox
+          [label]="checkbox.inputs?.label"
+          [color]="checkbox.inputs?.color || 'success'"
+          [(value)]="rowValue().checked"
+          [labelPosition]="checkbox.inputs?.labelPosition || 'right'"
+          (onValueChange)="checkbox.outputs?.onValueChange?.($event)"
+        />
+      }
+    }
+  }
+</div>

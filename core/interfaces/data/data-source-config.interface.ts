@@ -4,7 +4,7 @@ import { IColumn } from './table/column.interface';
 import { ITableAction } from './table/table-action.interface';
 import { ActionMode } from '@core/types/action-mode.type';
 
-export interface IDataSourceConfig<T> {
+export interface IDataSourceConfig<T, G = any> {
   columns: IColumn<T>[];
   header?: keyof T;
   headerRender?: (item: T, isSelected?: boolean) => string;

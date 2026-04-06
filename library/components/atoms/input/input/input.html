@@ -1,5 +1,11 @@
 <div class="card flex justify-center w-full">
-  <div class="flex flex-col w-full">
+  <div
+    class="flex w-full"
+    [class.top]="labelPosition() === 'top'"
+    [class.left]="labelPosition() === 'left'"
+    [class.right]="labelPosition() === 'right'"
+    [class.bottom]="labelPosition() === 'bottom'"
+  >
     @if (label()) {
       <app-input-label
         class="mb-1"

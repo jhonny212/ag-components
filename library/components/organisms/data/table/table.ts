@@ -17,6 +17,8 @@ import { TableHeader } from '../../../molecules/data/table/table-header/table-he
 import { TableRow } from '../../../molecules/data/table/table-row/table-row';
 import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-message';
 import { Button } from '../../../atoms/buttons/button/button';
+import { NgTemplateOutlet } from '@angular/common';
+import { filterDataTable } from '@core/util/general.util';
 
 @Component({
   selector: 'app-table',
@@ -31,6 +33,7 @@ import { Button } from '../../../atoms/buttons/button/button';
     TableRow,
     EmptyMessage,
     Button,
+    NgTemplateOutlet,
   ],
   templateUrl: './table.html',
   styleUrl: './table.scss',
@@ -44,6 +47,9 @@ export class Table<T> extends BaseTable<T> {
   emptyIcon = faTable;
 
   dataTableData = computed(() => {
+    if (this.filteredData() != null && !this.serverSide()) {
+      return this.filteredData() || [];
+    }
     if (this.addEmptyRows()) {
       const emptyRowsCount =
         (this.dataSourceFilter()?.pagination.pageSize || 10) - (this.data()?.length || 0);
@@ -59,6 +65,8 @@ export class Table<T> extends BaseTable<T> {
     return this.data();
   });
 
+  dataTableColumns = computed(() => this.dataSourceConfig()?.columns || []);
+
   handlePage({ first, rows }: TablePageEvent) {}
 
   override handleRowSelected(event: TableRowSelectEvent<T>): void {
@@ -69,15 +77,12 @@ export class Table<T> extends BaseTable<T> {
     this.onRowSelected.emit(event);
   }
 
-  handleSearch() {
-    this.dataSourceFilter.update((prev) => ({
-      ...prev,
-      searchTerm: this.searchTerm(),
-    }));
-    this.onLoadData.emit({
-      ...this.dataSourceFilter(),
-      searchTerm: this.searchTerm(),
-    });
+  handleSearch(event: string | null) {
+    if (!this.serverSide()) {
+      this.fontSideFilter(event || '');
+      return;
+    }
+    this.serverSideFilter();
   }
 
   handleLoadData(event: TableLazyLoadEvent) {
@@ -96,5 +101,23 @@ export class Table<T> extends BaseTable<T> {
   protected override handleReloadData(): void {
     this.selectedProduct = null;
     super.handleReloadData();
+  }
+
+  private fontSideFilter(event: string): void {
+    const data = filterDataTable(this.data() || [], this.dataSourceConfig()?.columns || [], {
+      value: event || '',
+    });
+    this.filteredData.set(data);
+  }
+
+  private serverSideFilter(): void {
+    this.dataSourceFilter.update((prev) => ({
+      ...prev,
+      searchTerm: this.searchTerm(),
+    }));
+    this.onLoadData.emit({
+      ...this.dataSourceFilter(),
+      searchTerm: this.searchTerm(),
+    });
   }
 }

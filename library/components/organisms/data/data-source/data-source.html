@@ -1,5 +1,5 @@
 @if (!isTableView()) {
-  <app-card [isClickable]="false">
+  <app-card [isClickable]="false" [enableRipple]="false">
     <header>
       <app-data-source-header
         [title]="title()"
@@ -38,7 +38,7 @@
     [actions]="actions()"
     [addEmptyRows]="addEmptyRows()"
     [hasBasicSearch]="hasBasicSearch()"
-    [enableRowSelection]="true"
+    [enableRowSelection]="enableRowSelection()"
     (onLoadData)="handleLoadData($event)"
     (onRowSelected)="handleSelectRow($event)"
     (onAction)="handleAction($event)"

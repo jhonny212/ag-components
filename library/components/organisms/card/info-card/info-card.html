@@ -1,7 +1,9 @@
 <app-card [enableRipple]="true" [class]="severity() + ' ck-card'" [loading]="loading()">
   <header>
     <div class="title">
-      <app-icon-fa [icon]="icon()" />
+      @if (icon()) {
+        <app-icon-fa [icon]="icon()" />
+      }
       <span>{{ title() }}</span>
     </div>
     @if (subTitle()) {

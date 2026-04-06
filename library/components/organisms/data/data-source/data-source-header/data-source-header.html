@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-2">
-  <div class="title ck-title-medium" [class.mb-3]="!subTitle()">
+  <div class="title" [class.mb-3]="!subTitle()">
     <span>{{ title() }}</span>
     <div class="view">
       <app-icon-fa
@@ -16,7 +16,7 @@
     </div>
   </div>
   @if (subTitle()) {
-    <p class="subtitle ck-subtitle-medium">
+    <p class="subtitle">
       {{ subTitle() }}
     </p>
   }

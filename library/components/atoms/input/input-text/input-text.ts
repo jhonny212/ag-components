@@ -50,9 +50,4 @@ export class InputText extends BaseInputField<string> implements OnDestroy {
     this.subscription?.unsubscribe();
     this.inputSubject.complete();
   }
-
-  // handleClick(event: Event) {
-  //   console.log("EMITIENDO DESDE ACA");
-  //   this.onClick.emit(event);
-  // }
 }

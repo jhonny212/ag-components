@@ -1,9 +1,10 @@
 import { Component, computed, input } from '@angular/core';
 import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
+import { CellComponent } from '../../cell-component/cell-component';
 
 @Component({
   selector: 'app-table-cell',
-  imports: [],
+  imports: [CellComponent],
   templateUrl: './table-cell.html',
   styleUrl: './table-cell.scss',
 })
@@ -18,4 +19,6 @@ export class TableCell<T> {
     const field = this.column().data.field;
     return field ? this.rowValue()[field] : '';
   });
+
+  isComponent = computed(() => !!this.column().data.component);
 }

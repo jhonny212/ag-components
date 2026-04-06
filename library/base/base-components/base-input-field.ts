@@ -9,7 +9,6 @@ import { BaseField } from './base-fields';
 export abstract class BaseInputField<T> extends BaseField implements FormValueControl<T | null> {
   invalid = input<boolean>(false);
   errors = input<readonly ValidationError.WithOptionalField[]>([]);
-
   value = model<T | null>(null);
   touched = model<boolean>(false);
 
@@ -22,6 +21,7 @@ export abstract class BaseInputField<T> extends BaseField implements FormValueCo
   });
 
   handleChange(value: T | null) {
+    this.handleValueChange(value);
     this.value.set(value);
   }
 }

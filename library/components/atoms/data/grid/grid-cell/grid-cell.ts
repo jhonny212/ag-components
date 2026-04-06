@@ -1,9 +1,10 @@
 import { Component, computed, input } from '@angular/core';
 import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
+import { CellComponent } from "../../cell-component/cell-component";
 
 @Component({
   selector: 'app-grid-cell',
-  imports: [],
+  imports: [CellComponent],
   templateUrl: './grid-cell.html',
   styleUrl: './grid-cell.scss',
 })
@@ -25,4 +26,6 @@ export class GridCell<T> {
       ? this.column().header?.format!()
       : this.column().header?.label || '';
   });
+
+  isComponent = computed(() => !!this.column().data.component);
 }

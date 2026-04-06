@@ -1,7 +1,7 @@
 @if (icon()) {
   <span
     pRipple
-    class="ck-icon-fa + {{ color() }}"
+    class="ck-icon-fa + {{ color() }} size-{{ size() }}"
     [class.ripple]="enableRipple()"
     [class.p-ripple-disabled]="!enableRipple()"
     (click)="handleClick($event)"

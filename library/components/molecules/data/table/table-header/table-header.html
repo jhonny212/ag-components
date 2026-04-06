@@ -4,6 +4,8 @@
     [pSortableColumn]="item.header?.sortableField?.toString()"
     [style.width]="item.width"
     [style.min-width]="item.minWidth"
+    [class.last-column]="$index === columns().length - 1 && !actions().length"
+    [class.first-column]="$index === 0"
   >
     <app-table-header-cell [header]="item" />
   </th>
@@ -12,6 +14,7 @@
 @if (actions().length) {
   <th
     class="ck-table-header"
+    [class.last-column]="true"
     [ngStyle]="{
       width: actionMinWidth(),
     }"

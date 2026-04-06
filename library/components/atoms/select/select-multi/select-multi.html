@@ -1,0 +1,29 @@
+<app-input
+  [errors]="errors()"
+  [field]="field()"
+  [label]="label()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    <p-multiselect
+      class="w-full ck-select-multi"
+      [options]="data()"
+      [ngModel]="value()"
+      [optionLabel]="labelKey()?.toString()"
+      [invalid]="hasErrors()"
+      [loading]="loading()"
+      [dataKey]="fieldKey()"
+      appendTo="body"
+      panelStyleClass="ck-select-multi"
+      [placeholder]="placeholder() || 'Seleccionar'"
+      emptyFilterMessage="No se encontraron resultados"
+      emptyMessage="No se encontraron resultados"
+      (ngModelChange)="onInputChange($event)"
+    >
+    </p-multiselect>
+  </content>
+</app-input>

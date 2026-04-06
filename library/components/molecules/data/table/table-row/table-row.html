@@ -1,5 +1,21 @@
-@for (item of columns(); track $index) {
-  <td class="text-xs xs:text-sm md:text-base">
+@for (item of columns(); track $index; let start = $first) {
+  <td class="row-item" [class.start]="start && expandableRows()">
+    @if (expandableRows() && start) {
+      <!-- <app-button
+        size="small"
+        [rounded]="true"
+        [pRowToggler]="data()"
+        severity="contrast"
+        [icon]="expandedIcon()"
+      /> -->
+      <app-icon-fa
+        [pRowToggler]="data()"
+        size="xs"
+        color="primary"
+        [enableRipple]="true"
+        [icon]="expandedIcon()"
+      />
+    }
     <app-table-cell [column]="item" [rowValue]="data()" />
   </td>
 }

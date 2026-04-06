@@ -16,6 +16,7 @@ export class IconFa {
   enableRipple = input<boolean>(false);
   customColor = input<string>('');
   customClass = input<string>('');
+  size = input<'xs' | 'sm' | 'lg' | 'xl' | ''>('');
   onClick = output<Event>();
 
   handleClick(event: Event) {

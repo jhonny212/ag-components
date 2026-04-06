@@ -6,7 +6,8 @@ app-paginator {
   @apply grid grid-cols-1 gap-4 relative;
 
   .view-content {
-    @apply grid grid-cols-1 gap-y-3 xl:grid-cols-2 2xl:grid-cols-3;
+    @apply grid gap-y-3;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
 

@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { IconFa } from '../icon-fa/icon-fa';
+import { PositionType } from '@lib/core/types/position.type';
 
 @Component({
   selector: 'app-input-label',

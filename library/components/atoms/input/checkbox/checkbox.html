@@ -1,0 +1,24 @@
+<app-input
+  [label]="label()"
+  [field]="field()"
+  [errors]="errors()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [icon]="icon()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+  [labelPosition]="labelPosition()"
+>
+  <content>
+    <input
+      type="checkbox"
+      [id]="field()"
+      [class]="checkboxClass()"
+      [disabled]="disabled()"
+      [ngModel]="value()"
+      (change)="onInputChange($event)"
+      (blur)="touched.set(true)"
+    />
+  </content>
+</app-input>

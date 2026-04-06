@@ -2,6 +2,14 @@
   @apply flex gap-2 justify-center justify-items-center;
 }
 
+.row-item {
+  @apply text-xs xs:text-sm md:text-base;
+
+  &.start {
+    @apply flex flex-row gap-2;
+  }
+}
+
 .actions-dropdown {
   .content {
     @apply flex justify-center;

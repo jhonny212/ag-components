@@ -1,3 +1,8 @@
-<div class="content flex">
-  <div [innerHTML]="value()"></div>
-</div>
+@if (!isComponent()) {
+  <div class="content flex">
+    <div [innerHTML]="value()"></div>
+  </div>
+}
+@if (isComponent()) {
+  <app-cell-component [column]="column()" [rowValue]="rowValue()" />
+}

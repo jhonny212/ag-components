@@ -1,23 +1,25 @@
-<p-button
+<button
+  type="button"
+  pButton
+  pRipple
   (click)="handleClick($event)"
-  [class]="
-    customClass() +
-    ' ck-button relative overflow-hidden ' +
-    'severity-' +
-    severity() +
-    ' size-' +
-    size()
-  "
-  [severity]="severity()"
-  [label]="label()"
-  [loading]="loading()"
+  [class]="customClass() + ' ck-button ' + 'severity-' + severity() + ' size-' + size()"
+  [class.variant-outline]="variant() === 'outline'"
+  [class.variant-normal]="variant() === 'normal'"
   [disabled]="disable()"
-  [rounded]="rounded()"
+  [class.disabled]="disable()"
   [pTooltip]="tooltip()"
+  [class.rounded]="rounded()"
+  [loading]="!!loading()"
   tooltipPosition="left"
   [tooltipStyleClass]="'tooltip-' + severity()"
 >
-  <ng-template pTemplate="icon">
-    <app-icon-fa [icon]="icon()" [color]="severity()" />
-  </ng-template>
-</p-button>
+  <ng-content select="[content]">
+    @if (icon()) {
+      @if (!loading()) {
+        <app-icon-fa [icon]="icon()" [color]="severity()" class="mr-0" />
+      }
+    }
+    {{ label() }}
+  </ng-content>
+</button>
