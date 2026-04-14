@@ -12,6 +12,7 @@ import { BaseInputField } from 'src/app/shared/library/base';
 })
 export class InputNumber extends BaseInputField<number> {
   mode = input<'decimal' | 'currency' | undefined>(undefined);
+  maxDigits = input<number>(2);
 
   onInputChange(value: number | null) {
     this.value.set(value);
