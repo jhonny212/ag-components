@@ -9,6 +9,11 @@
     />
   }
   @for (item of columns(); track $index; let i = $index) {
-    <app-grid-cell [column]="item" [rowValue]="data()" [isLast]="i === columns().length - 1" />
+    <app-grid-cell
+      [column]="item"
+      [rowValue]="data()"
+      [isLast]="i === columns().length - 1"
+      (componentCellEvent)="handleCellEvent($event)"
+    />
   }
 </div>

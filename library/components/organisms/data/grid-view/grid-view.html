@@ -30,6 +30,7 @@
           [actions]="dataSourceActions()"
           (onClick)="handleClick($event)"
           (onAction)="handleAction($event)"
+          (componentCellEvent)="handleCellEvent($event)"
         />
       }
     </div>

@@ -15,6 +15,7 @@ export abstract class BaseField {
   loading = input<boolean>(false);
   inputClass = input<string>('');
   icon = input<IconDefinition | undefined>(undefined);
+  isDisabled = input<boolean | undefined>(false);
 
   onClick = output<Event>();
   onValueChange = output<any>();

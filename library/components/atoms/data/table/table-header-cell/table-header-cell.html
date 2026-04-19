@@ -1,8 +1,10 @@
 @if (header()?.header?.sortableField) {
-  <div class="header-cell">
+  <div class="header-cell {{ header()?.header?.class }}">
     {{ headerName() }}
     <p-sortIcon [field]="header()?.header?.sortableField?.toString()" />
   </div>
 } @else {
-  {{ headerName() }}
+  <div [class]="header()?.header?.class">
+    {{ headerName() }}
+  </div>
 }

@@ -1,4 +1,4 @@
-<div class="content flex">
+<div [class]="column().data.class">
   @switch (column().data.type) {
     @case ('button') {
       @if (buttonComponentDef(); as btn) {
@@ -19,6 +19,18 @@
           [(value)]="rowValue().checked"
           [labelPosition]="checkbox.inputs?.labelPosition || 'right'"
           (onValueChange)="checkbox.outputs?.onValueChange?.($event)"
+        />
+      }
+    }
+    @case ('toggle') {
+      @if (toggleDef(); as toggle) {
+        <app-toggle
+          [label]="toggle.inputs?.label"
+          [(value)]="rowValue()[column().data.field]"
+          [isDisabled]="toggle.inputs?.isDisabled"
+          [loading]="cellEvent().loading()"
+          [labelPosition]="toggle.inputs?.labelPosition || 'right'"
+          (onValueChange)="handleComponentEvent('valueChange', 'toggle', $event)"
         />
       }
     }

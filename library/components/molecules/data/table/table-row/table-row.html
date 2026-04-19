@@ -1,13 +1,6 @@
 @for (item of columns(); track $index; let start = $first) {
   <td class="row-item" [class.start]="start && expandableRows()">
     @if (expandableRows() && start) {
-      <!-- <app-button
-        size="small"
-        [rounded]="true"
-        [pRowToggler]="data()"
-        severity="contrast"
-        [icon]="expandedIcon()"
-      /> -->
       <app-icon-fa
         [pRowToggler]="data()"
         size="xs"
@@ -16,7 +9,11 @@
         [icon]="expandedIcon()"
       />
     }
-    <app-table-cell [column]="item" [rowValue]="data()" />
+    <app-table-cell
+      [column]="item"
+      [rowValue]="data()"
+      (componentCellEvent)="handleCellEvent($event)"
+    />
   </td>
 }
 @if (actions().length && actionMode() === 'buttons') {
@@ -27,7 +24,7 @@
         [rounded]="true"
         [icon]="item.faIcon"
         size="small"
-        [loading]="!!cellEvents().get(item.triggerAction)?.loading"
+        [loading]="!!actionsEvent().get(item.triggerAction)?.loading()"
         [tooltip]="item.label"
         (onClick)="handleAction(item)"
       />
@@ -38,7 +35,7 @@
     <div class="content">
       <app-data-action
         [actions]="actions()"
-        [cellEvents]="cellEvents()"
+        [cellEvents]="actionsEvent()"
         (onAction)="handleAction($event)"
       />
     </div>

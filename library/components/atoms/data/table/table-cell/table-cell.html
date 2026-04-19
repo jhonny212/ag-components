@@ -1,8 +1,12 @@
 @if (!isComponent()) {
-  <div class="content flex">
+  <div class="content flex {{column().data.class}}">
     <div [innerHTML]="value()"></div>
   </div>
 }
 @if (isComponent()) {
-  <app-cell-component [column]="column()" [rowValue]="rowValue()" />
+  <app-cell-component
+    [column]="column()"
+    [rowValue]="rowValue()"
+    (componentEvent)="handleComponentEvent($event)"
+  />
 }

@@ -1,11 +1,13 @@
 <app-input [label]="label()">
   <content>
-    <p-datepicker class="ck-date"
-      [ngModel]="value()"
-      [showClear]="true"
-      [selectionMode]="selectionMode()"
+    <p-datepicker
+      class="ck-date"
+      [(ngModel)]="value"
+      [showClear]="false"
       appendTo="body"
-      (ngModelChange)="handleChange($event)"
+      (onClear)="handleClear()"
+      [selectionMode]="selectionMode()"
+      (onSelect)="handleChange($event)"
     >
     </p-datepicker>
   </content>

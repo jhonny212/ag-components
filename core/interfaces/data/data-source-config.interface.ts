@@ -3,6 +3,7 @@ import { ColorType } from '@core/types/color.type';
 import { IColumn } from './table/column.interface';
 import { ITableAction } from './table/table-action.interface';
 import { ActionMode } from '@core/types/action-mode.type';
+import { SortType } from '@lib/core/types/sort.type';
 
 export interface IDataSourceConfig<T, G = any> {
   columns: IColumn<T>[];
@@ -15,4 +16,6 @@ export interface IDataSourceConfig<T, G = any> {
   color?: ColorType;
   actions?: ITableAction<T>[];
   actionMode?: ActionMode;
+  defaultSortField?: keyof T;
+  defaultSortDirection?: SortType;
 }

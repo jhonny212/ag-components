@@ -20,6 +20,7 @@
           (onRowSelected)="handleSelectRow($event)"
           (onLoadData)="handleLoadData($event)"
           (onAction)="handleAction($event)"
+          (onCell)="handleCellEvent($event)"
         />
       </div>
     </content>
@@ -42,6 +43,7 @@
     (onLoadData)="handleLoadData($event)"
     (onRowSelected)="handleSelectRow($event)"
     (onAction)="handleAction($event)"
+    (onCell)="handleCellEvent($event)"
   >
     <header>
       <app-data-source-header
@@ -49,6 +51,7 @@
         [subTitle]="subTitle()"
         [(isTableView)]="isTableView"
       />
+      <ng-content selector="[filters]"></ng-content>
     </header>
   </app-table-card>
 }

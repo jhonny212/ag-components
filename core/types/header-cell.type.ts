@@ -1,1 +1,1 @@
-export type TypeHeaderCell = 'checkbox' | 'text' | 'button';
+export type TypeHeaderCell = 'checkbox' | 'text' | 'button' | 'toggle';

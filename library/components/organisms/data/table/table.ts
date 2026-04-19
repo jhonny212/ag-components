@@ -1,4 +1,4 @@
-import { Component, computed, signal, ViewChild } from '@angular/core';
+import { Component, computed, ViewChild } from '@angular/core';
 import {
   Table as TablePrimeng,
   TableModule,
@@ -59,7 +59,7 @@ export class Table<T> extends BaseTable<T> {
       ) {
         return [];
       }
-      const emptyRows = Array.from({ length: emptyRowsCount }, () => ({}) as T);
+      const emptyRows = Array.from({ length: emptyRowsCount }, () => (({}) as T));
       return [...(this.data() || []), ...emptyRows];
     }
     return this.data();

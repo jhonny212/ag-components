@@ -6,6 +6,10 @@
   @if (!isComponent()) {
     <p class="font-bold" [innerHTML]="value()"></p>
   } @else {
-    <app-cell-component [column]="column()" [rowValue]="rowValue()" />
+    <app-cell-component
+      [column]="column()"
+      [rowValue]="rowValue()"
+      (componentEvent)="handleComponentEvent($event)"
+    />
   }
 </div>

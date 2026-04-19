@@ -34,6 +34,7 @@
               [data]="item()"
               [actions]="actions()"
               (onAction)="handleAction($event)"
+              (componentCellEvent)="handleCellEvent($event)"
             />
           </p-accordion-content>
         </p-accordion-panel>
@@ -44,6 +45,7 @@
         [actions]="actions()"
         [data]="item()"
         (onAction)="handleAction($event)"
+        (componentCellEvent)="handleCellEvent($event)"
       />
     }
   </content>

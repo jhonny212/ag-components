@@ -21,6 +21,7 @@ export class GridRow<T> {
   columns = input.required<IColumn<T>[]>();
   actions = input<ITableAction<T>[]>([]);
   cellEvents = signal<Map<string, ICellEvent<T>>>(new Map());
+  componentCellEvent = output<ICellEvent<T>>();
   dotsIcon = faEllipsisV;
 
   onAction = output<ICellEvent<T>>();
@@ -32,5 +33,9 @@ export class GridRow<T> {
     if (event) {
       this.onAction.emit(event);
     }
+  }
+
+  handleCellEvent(event: ICellEvent<T>): void {
+    this.componentCellEvent.emit(event);
   }
 }

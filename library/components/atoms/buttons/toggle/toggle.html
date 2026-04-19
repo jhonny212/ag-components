@@ -1,5 +1,5 @@
 <app-input
-  [label]="label()"
+  [label]="loading() ? 'Cargando...' : label()"
   [field]="field()"
   [errors]="errors()"
   [help]="help()"
@@ -9,6 +9,14 @@
   [showRequired]="showRequired()"
 >
   <content>
-    <p-toggleswitch [ngModel]="value()" (ngModelChange)="onInputChange($event)" />
+    @if (!loading()) {
+      <p-toggleswitch
+        [ngModel]="value()"
+        (ngModelChange)="onInputChange($event)"
+        [disabled]="!!isDisabled()"
+      />
+    } @else {
+      <p-skeleton width="3rem" height="1.5rem" styleClass="rounded-full" />
+    }
   </content>
 </app-input>

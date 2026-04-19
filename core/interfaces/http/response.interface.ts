@@ -1,6 +1,6 @@
 export interface IBaseResponse {
   success: boolean;
-  message: string[] | string;
+  message: string;
 }
 
 export interface IResponse<T> extends IBaseResponse {
@@ -13,7 +13,6 @@ export interface IPagedResponse<T> extends IBaseResponse {
   pageCount: number;
   pageNumber: number;
   success: boolean;
-  message: string;
   totalRecords: number;
 }
 

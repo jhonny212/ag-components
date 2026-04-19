@@ -4,8 +4,8 @@ export interface IDataCell<T> {
   field?: keyof T;
   type?: TypeDataCell;
   styles?: { [value: string]: string };
-  styleClass?: string;
+  class?: string;
   format?: (value: T) => any;
-  disable?: (value: any) => boolean;
   component?: (row: T) => CellComponent;
+  canRenderComponent?: (row: T) => boolean;
 }

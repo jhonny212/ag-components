@@ -1,6 +1,7 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
-import { CellComponent } from "../../cell-component/cell-component";
+import { CellComponent } from '../../cell-component/cell-component';
+import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 
 @Component({
   selector: 'app-grid-cell',
@@ -12,6 +13,8 @@ export class GridCell<T> {
   column = input.required<IColumn<T>>();
   rowValue = input.required<T>();
   isLast = input.required<boolean>();
+
+  componentCellEvent = output<ICellEvent<T>>();
 
   value = computed(() => {
     if (this.column().data.format) {
@@ -27,5 +30,19 @@ export class GridCell<T> {
       : this.column().header?.label || '';
   });
 
-  isComponent = computed(() => !!this.column().data.component);
+  isComponent = computed(() => {
+    const hasComponent = !!this.column().data.component;
+    if (hasComponent) {
+      const canRender = this.column().data.canRenderComponent;
+      if (canRender) {
+        return canRender(this.rowValue());
+      }
+      return true;
+    }
+    return hasComponent;
+  });
+
+  handleComponentEvent(event: ICellEvent<T>) {
+    this.componentCellEvent.emit(event);
+  }
 }

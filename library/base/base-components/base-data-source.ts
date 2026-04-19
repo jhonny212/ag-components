@@ -49,6 +49,7 @@ export abstract class BaseDataSource<T> {
   onRowSelected = output<TableRowSelectEvent<T>>();
   onLoadData = output<IDataSourceFilter<T>>();
   onAction = output<ICellEvent<T>>();
+  onCell = output<ICellEvent<T>>();
 
   /**
    * Icons
@@ -85,6 +86,10 @@ export abstract class BaseDataSource<T> {
     return this.dataSourceConfig().actionMode || this.actionMode();
   });
 
+  defaultSortField = computed(() => {
+    return this.dataSourceConfig().defaultSortField as string | undefined;
+  });
+
   protected pageStateToPagination(event: PaginatorState): IPagination {
     const pagination = {
       page: event.first ? event.first / (event.rows || 10) : 0,
@@ -97,6 +102,10 @@ export abstract class BaseDataSource<T> {
     this.onAction.emit(action);
   }
 
+  handleCellEvent(event: ICellEvent<T>): void {
+    this.onCell.emit(event);
+  }
+
   protected tableLazyLoadEventToDataSourceFilter(event: TableLazyLoadEvent): IDataSourceFilter<T> {
     const pagination = this.pageStateToPagination({
       first: event.first,
@@ -106,7 +115,7 @@ export abstract class BaseDataSource<T> {
     const sortColumn = event.sortField as keyof T;
     return {
       pagination,
-      sortDirection,
+      sortOrder: sortDirection,
       sortColumn,
       searchTerm: this.searchTerm(),
     };

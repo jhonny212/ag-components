@@ -7,7 +7,7 @@ import { BaseDataSource } from 'src/app/shared/library/base';
 import { GridCard } from '../../../molecules';
 import { Paginator } from '../../../atoms/data/paginator/paginator';
 import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-message';
-import { Button } from "../../../atoms/buttons/button/button";
+import { Button } from '../../../atoms/buttons/button/button';
 
 @Component({
   selector: 'app-grid-view',
@@ -49,7 +49,7 @@ export class GridView<T> extends BaseDataSource<T> {
       ...prev,
       pagination: this.pageStateToPagination(event),
     }));
-    const { sortDirection, sortColumn } = this.dataSourceFilter();
+    const { sortOrder, sortColumn } = this.dataSourceFilter();
     this.onLoadData.emit({
       pagination: this.pageStateToPagination({
         first: event.first || 0,
@@ -57,7 +57,7 @@ export class GridView<T> extends BaseDataSource<T> {
       }),
       searchTerm: this.searchTerm(),
       sortColumn: sortColumn,
-      sortDirection: sortDirection,
+      sortOrder,
     });
   }
 
@@ -69,7 +69,7 @@ export class GridView<T> extends BaseDataSource<T> {
       }),
       searchTerm: this.searchTerm(),
       sortColumn: event.sortField as keyof T,
-      sortDirection: event.sortOrder === 1 ? 'ASC' : 'DESC',
+      sortOrder: event.sortOrder === 1 ? 'ASC' : 'DESC',
     });
   }
 }

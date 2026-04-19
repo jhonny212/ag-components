@@ -10,6 +10,24 @@ import { BaseInputField } from 'src/app/shared/library/base';
   templateUrl: './input-date.html',
   styleUrl: './input-date.scss',
 })
-export class InputDate extends BaseInputField<Date | Date[]> {
+export class InputDate extends BaseInputField<Date | (Date | null)[]> {
   selectionMode = input<'single' | 'multiple' | 'range' | undefined>('single');
+
+  public override handleChange(value: any): void {
+    if (this.selectionMode() === 'single') {
+      this.value.set(value as Date);
+    } else {
+      this.handleValueChange(this.value());
+    }
+  }
+
+  public override handleClear(): void {
+    if (this.selectionMode() === 'single') {
+      this.value.set(null);
+      this.handleValueChange(null);
+    } else {
+      this.value.set([null, null]);
+      this.handleValueChange([null, null]);
+    }
+  }
 }

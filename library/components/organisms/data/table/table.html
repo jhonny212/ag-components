@@ -20,6 +20,8 @@
     paginatorStyleClass="ck-paginator"
     [dataKey]="primaryKey()?.toString()"
     [filterDelay]="0"
+    [sortField]="defaultSortField()"
+    [sortOrder]="dataSourceConfig().defaultSortDirection === 'ASC' ? 1 : -1"
     (onPage)="handlePage($event)"
     (onRowSelect)="handleRowSelected($event)"
     (onLazyLoad)="handleLoadData($event)"
@@ -70,6 +72,7 @@
             [actionMode]="dataSourceActionMode()"
             [data]="product"
             (onAction)="handleAction($event)"
+            (cellEvent)="handleCellEvent($event)"
           ></tr>
         } @else {
           <!--start: Render empty state when there are no records -->

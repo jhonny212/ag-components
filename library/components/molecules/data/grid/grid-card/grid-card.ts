@@ -23,6 +23,7 @@ export class GridCard<T> {
 
   onClick = output<T>();
   onAction = output<ICellEvent<T>>();
+   componentCellEvent = output<ICellEvent<T>>();
 
   isActive = computed(() => {
     if (!this.selectedItem()) {
@@ -50,5 +51,9 @@ export class GridCard<T> {
 
   handleClick(): void {
     this.onClick.emit(this.item());
+  }
+
+  handleCellEvent(event: ICellEvent<T>): void {
+    this.componentCellEvent.emit(event);
   }
 }

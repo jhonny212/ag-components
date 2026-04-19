@@ -20,8 +20,20 @@ export abstract class BaseInputField<T> extends BaseField implements FormValueCo
     return this.touched() && this.invalid();
   });
 
+  disabledComponent = computed(() => {
+    if (this.loading()) {
+      return true;
+    }
+    return !!this.isDisabled();
+  });
+
   handleChange(value: T | null) {
     this.handleValueChange(value);
     this.value.set(value);
+  }
+
+  handleClear() {
+    this.handleValueChange(null);
+    this.value.set(null);
   }
 }

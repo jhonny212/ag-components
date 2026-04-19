@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ITableAction } from '../interfaces/data/table/table-action.interface';
 import { ICellEvent } from '../interfaces/data/table/table-event.interface';
-import { EventEmitter, InputSignal, WritableSignal } from '@angular/core';
+import { EventEmitter, InputSignal, signal, WritableSignal } from '@angular/core';
 import { updateMap } from '../utils/map.util';
 
 export class DataActionHelper<T> {
@@ -21,6 +21,7 @@ export class DataActionHelper<T> {
         data: this.data(),
         columnKey: 'action' as keyof T,
         action,
+        loading: signal<boolean>(false),
       };
       updateMap(this.cellEvents, action.triggerAction, event);
       return event;

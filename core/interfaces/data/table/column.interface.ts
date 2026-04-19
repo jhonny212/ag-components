@@ -5,7 +5,7 @@ export interface IHeaderCell<T> {
   label?: string;
   type?: TypeHeaderCell;
   styles?: { [value: string]: string };
-  styleClass?: string;
+  class?: string;
   format?: () => string;
   sortableField?: keyof T;
 }

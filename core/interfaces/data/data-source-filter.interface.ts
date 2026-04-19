@@ -5,5 +5,5 @@ export interface IDataSourceFilter<T> {
   pagination: IPagination;
   searchTerm: string;
   sortColumn?: keyof T;
-  sortDirection: SortType;
+  sortOrder: SortType;
 }

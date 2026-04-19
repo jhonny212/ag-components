@@ -36,7 +36,7 @@ export class DataSource<T> extends BaseDataSource<T> implements OnInit {
         this.handleLoadData({
           pagination: PaginatorHelper.getDefaultPagination(),
           searchTerm: '',
-          sortDirection: 'ASC',
+          sortOrder: 'ASC',
         });
       }
     }, 100);

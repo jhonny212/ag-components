@@ -2,18 +2,12 @@ import { InputSignal, OutputEmitterRef, Type } from '@angular/core';
 import { Button } from '../../library/components/atoms/buttons/button/button';
 import { Input } from '../../library/components/atoms/input/input/input';
 import { Checkbox } from '../../library/components/atoms/input/checkbox/checkbox';
+import { Toggle } from '../../library/components/atoms/buttons/toggle/toggle';
 
 export type TypeDataCell =
   | 'checkbox'
-  | 'tag'
-  | 'text'
-  | 'avatar'
-  | 'expand'
-  | 'status'
   | 'button'
-  | 'full-button'
-  | 'input-text'
-  | 'input-number'
+  | 'toggle'
   | 'select';
 
 type ExtractOutputs<T> = {
@@ -39,5 +33,6 @@ export type DynamicComponent<T> = {
 export type ButtonComponent = DynamicComponent<Button>;
 export type InputComponent = DynamicComponent<Input<string | number>>;
 export type CheckboxComponent = DynamicComponent<Checkbox>;
+export type ToggleComponent = DynamicComponent<Toggle>;
 
-export type CellComponent = ButtonComponent | InputComponent | CheckboxComponent;
+export type CellComponent = ButtonComponent | InputComponent | CheckboxComponent | ToggleComponent;
