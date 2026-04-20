@@ -13,8 +13,11 @@ import { BaseInputField } from 'src/app/shared/library/base';
 export class InputNumber extends BaseInputField<number> {
   mode = input<'decimal' | 'currency' | undefined>(undefined);
   maxDigits = input<number>(2);
+  minValue = input<number | null | undefined>(null);
+  maxValue = input<number | null | undefined>(null);
 
   onInputChange(value: number | null) {
     this.value.set(value);
+    this.handleChange(value);
   }
 }

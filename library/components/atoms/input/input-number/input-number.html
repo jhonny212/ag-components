@@ -13,6 +13,8 @@
       inputId="integeronly"
       class="ck-input-number"
       [mode]="mode()"
+      [min]="minValue()"
+      [max]="maxValue()"
       [invalid]="hasErrors()"
       [useGrouping]="false"
       [maxFractionDigits]="maxDigits()"

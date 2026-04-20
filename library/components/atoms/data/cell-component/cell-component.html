@@ -34,5 +34,30 @@
         />
       }
     }
+    @case ('select') {
+      @if (selectDef(); as select) {
+        <app-select
+          [label]="select.inputs?.label"
+          [data]="select.inputs?.data || []"
+          [labelKey]="select.inputs?.labelKey"
+          [(value)]="rowValue()[column().data.field]"
+          [isDisabled]="select.inputs?.isDisabled"
+          [loading]="cellEvent().loading()"
+          (onValueChange)="handleComponentEvent('valueChange', 'select', $event)"
+        />
+      }
+    }
+    @case ('input-number') {
+      @if (inputNumberDef(); as inputNumber) {
+        <app-input-number
+          [mode]="inputNumber.inputs?.mode"
+          [minValue]="inputNumber.inputs?.minValue"
+          [maxValue]="inputNumber.inputs?.maxValue"
+          [(value)]="rowValue()[column().data.field]"
+          (onInputChange)="handleComponentEvent('valueChange', 'input-number', $event)"
+        />
+      }
+    }
+
   }
 </div>

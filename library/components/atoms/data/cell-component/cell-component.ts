@@ -3,6 +3,8 @@ import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
 import {
   ButtonComponent,
   CheckboxComponent,
+  InputNumberComponent,
+  SelectComponent,
   ToggleComponent,
   TypeDataCell,
 } from '@lib/core/types/data-cell.type';
@@ -11,10 +13,12 @@ import { Checkbox } from '../../input/checkbox/checkbox';
 import { Toggle } from '../../buttons/toggle/toggle';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { ComponentEvent } from '@lib/core/types/component-event.type';
+import { Select } from '../../select/select/select';
+import { InputNumber } from "../../input/input-number/input-number";
 
 @Component({
   selector: 'app-cell-component',
-  imports: [Button, Checkbox, Toggle],
+  imports: [Button, Checkbox, Toggle, Select, InputNumber],
   templateUrl: './cell-component.html',
   styleUrl: './cell-component.scss',
 })
@@ -51,6 +55,22 @@ export class CellComponent<T> {
     const toggle = this.column().data.component;
     if (toggle) {
       return toggle(this.rowValue()) as ToggleComponent;
+    }
+    return null;
+  });
+
+  selectDef = computed(() => {
+    const select = this.column().data.component;
+    if (select) {
+      return select(this.rowValue()) as SelectComponent<any>;
+    }
+    return null;
+  });
+
+  inputNumberDef = computed(() => {
+    const inputNumber = this.column().data.component;
+    if (inputNumber) {
+      return inputNumber(this.rowValue()) as InputNumberComponent;
     }
     return null;
   });

@@ -23,7 +23,8 @@ export abstract class BaseField {
   constructor() {}
 
   handleClick(event: Event) {
-    this.onClick.emit(event);
+    //TODO
+    //this.onClick.emit(event);
   }
 
   handleValueChange(value: any) {
