@@ -1,0 +1,9 @@
+<div pRipple
+  class="icon"
+  [class.primary]="color() === 'primary'"
+  [class.gray]="color() === 'gray'"
+  [class.neutral]="color() === 'neutral'"
+  [class.variant-outline]="variant() === 'outline'"
+>
+  <app-icon-fa [icon]="icon()" [color]="color()" />
+</div>

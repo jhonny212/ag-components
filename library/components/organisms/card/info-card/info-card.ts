@@ -8,7 +8,7 @@ import { SkeletonInput } from '../../../atoms/skeleton/skeleton-input/skeleton-i
 import { SkeletonIcon } from '../../../atoms/skeleton/skeleton-icon/skeleton-icon';
 import { SkeletonText } from '../../../atoms/skeleton/skeleton-text/skeleton-text';
 import { Ripple } from 'primeng/ripple';
-import { ColorType } from '@core/types/color.type';
+import { ColorType } from '@lib/core/types/color.type';
 import { IconFa } from "../../../atoms/other/icon-fa/icon-fa";
 
 @Component({

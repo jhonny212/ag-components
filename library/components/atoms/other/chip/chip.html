@@ -1,1 +1,8 @@
-<p>chip works!</p>
+<span pRipple
+  [class]="customClass() + ' ck-chip cursor-pointer ' + 'severity-' + severity()"
+  [class.variant-outline]="variant() === 'outline'"
+  [class.variant-normal]="variant() === 'normal'"
+  [class.small]="size() === 'small'"
+>
+  {{ label() }}
+</span>

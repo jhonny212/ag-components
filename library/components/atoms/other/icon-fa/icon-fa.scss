@@ -1,11 +1,3 @@
-.ck-icon-fa.danger {
-  @apply text-danger-500 dark:text-danger-100;
-}
-
-.ck-icon-fa.help {
-  @apply text-help-500 dark:text-help-200;
-}
-
 .ck-icon-fa {
   &.ripple {
     @apply h-9 w-9 min-h-9 min-w-9 rounded-full flex items-center justify-center cursor-pointer;
@@ -16,7 +8,7 @@
   }
 
   &.primary {
-    @apply ck-lower-primary-color dark:text-primary-100;
+    @apply ck-lower-primary-color dark:text-primary-400;
 
     &.ripple {
       @apply bg-primary-100/90;
@@ -33,6 +25,6 @@
   }
 
   &.neutral {
-    @apply bg-neutral-100/30 text-ck-neutral-800;
+    @apply text-ck-neutral-400;
   }
 }

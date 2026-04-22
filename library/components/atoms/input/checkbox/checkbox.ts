@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ColorType } from '@core/types/color.type';
+import { ColorType } from '@lib/core/types/color.type';
 import { SizeType } from '@lib/core/types/size.type';
 import { BaseInputField } from 'src/app/shared/library/base';
 import { Input } from '../input/input';

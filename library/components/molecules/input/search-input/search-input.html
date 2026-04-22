@@ -11,7 +11,9 @@
       [debounceTime]="debounceTime()"
       [minTextLength]="minTextLength()"
       [acceptEmptyString]="acceptEmptyString()"
-      [(value)]="value"
+      [value]="value()"
+      (onValueChange)="handleChange($event)"
+      (valueChange)="handleValueChange($event)"
     />
   </p-iconfield>
 </div>

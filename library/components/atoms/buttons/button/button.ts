@@ -5,10 +5,11 @@ import { ButtonModule, ButtonSeverity } from 'primeng/button';
 import { Tooltip } from 'primeng/tooltip';
 import { IconFa } from '../../other/icon-fa/icon-fa';
 import { VariantType } from '@lib/core/types/variant.type';
+import { Ripple } from "primeng/ripple";
 
 @Component({
   selector: 'app-button',
-  imports: [ButtonModule, FontAwesomeModule, Tooltip, IconFa],
+  imports: [ButtonModule, FontAwesomeModule, Tooltip, IconFa, Ripple],
   templateUrl: './button.html',
   styleUrl: './button.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

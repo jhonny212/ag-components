@@ -1,0 +1,15 @@
+.icon {
+  @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-lg;
+}
+
+.primary {
+  @apply bg-primary-100 dark:bg-primary-800;
+
+  &.variant-outline {
+    @apply bg-primary-500/50 border-primary-500 border;
+  }
+}
+
+.neutral {
+  @apply bg-ck-neutral-100 dark:bg-ck-neutral-800;
+}

@@ -7,6 +7,16 @@
       [class]="'ck-card ' + color() + ' ' + customColor()"
       [class.p-ripple-disabled]="!enableRipple()"
     >
+      @if (showClose()) {
+        <app-button
+          class="absolute top-0 right-2"
+          size="x-small"
+          [icon]="closeIcon"
+          [rounded]="true"
+          severity="danger"
+          (click)="handleClose()"
+        />
+      }
       <div class="header">
         <ng-content select="header">
           <div class="title">

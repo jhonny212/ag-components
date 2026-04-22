@@ -1,0 +1,83 @@
+.ck-chip {
+  @apply inline-flex items-center justify-center px-3 py-1 rounded-full ck-text-base leading-none border;
+
+  &.small {
+    @apply text-xs px-2 py-0.5;
+  }
+
+  &.variant-normal {
+    @apply border-transparent;
+  }
+
+  &.severity-primary {
+    @apply bg-primary-700 text-primary-200;
+
+    &.variant-outline {
+      @apply bg-primary-500/50 border-primary-500 text-primary-200;
+    }
+  }
+
+  &.severity-help {
+    @apply bg-help-500 text-help-100;
+
+    &.variant-outline {
+      @apply bg-help-500/10 border-help-500 text-help-500;
+    }
+  }
+
+  &.severity-danger {
+    @apply bg-danger-900 text-danger-300;
+
+    &.variant-outline {
+      @apply bg-danger-500/50 border-danger-500 text-danger-200;
+    }
+  }
+
+  &.severity-gray {
+    @apply bg-neutral-500 text-neutral-100;
+
+    &.variant-outline {
+      @apply bg-neutral-500/50 border-neutral-500 text-neutral-200;
+    }
+  }
+
+  &.severity-warn {
+    @apply bg-orange-400 text-orange-50;
+
+    &.variant-outline {
+      @apply bg-orange-400/10 border-orange-400 text-orange-500;
+    }
+  }
+
+  &.severity-success {
+    @apply bg-success-900 text-success-300;
+
+    &.variant-outline {
+      @apply bg-success-500/50 border-success-500 text-success-200;
+    }
+  }
+
+  &.severity-secondary {
+    @apply bg-slate-500 text-slate-100;
+
+    &.variant-outline {
+      @apply bg-slate-500/10 border-slate-500 text-slate-500;
+    }
+  }
+
+  &.severity-contrast {
+    @apply bg-slate-900 text-white;
+
+    &.variant-outline {
+      @apply bg-slate-900/10 border-slate-900 text-slate-900;
+    }
+  }
+
+  &.severity-info {
+    @apply bg-sky-500 text-sky-100;
+
+    &.variant-outline {
+      @apply bg-sky-500/10 border-sky-500 text-sky-500;
+    }
+  }
+}

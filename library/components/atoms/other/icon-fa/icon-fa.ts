@@ -1,8 +1,9 @@
 import { Component, input, output } from '@angular/core';
-import { ColorType } from '@core/types/color.type';
+import { ColorType } from '@lib/core/types/color.type';
 import { IconDefinition as definitionV2, FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { IconDefinition as icon3, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Ripple } from 'primeng/ripple';
+import { SizeType } from '@lib/core/types/size.type';
 
 @Component({
   selector: 'app-icon-fa',
@@ -14,9 +15,10 @@ export class IconFa {
   icon = input<IconDefinition | definitionV2 | icon3 | null | undefined>(null);
   color = input<ColorType | undefined>('transparent');
   enableRipple = input<boolean>(false);
+  size = input<SizeType>('medium');
+  
   customColor = input<string>('');
   customClass = input<string>('');
-  size = input<'xs' | 'sm' | 'lg' | 'xl' | ''>('');
   onClick = output<Event>();
 
   handleClick(event: Event) {

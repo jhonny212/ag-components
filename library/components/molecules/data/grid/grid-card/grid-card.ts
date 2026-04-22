@@ -1,7 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
 import { GridHeader } from '../grid-header/grid-header';
 import { GridRow } from '../grid-row/grid-row';
-import { ColorType } from '@core/types/color.type';
+import { ColorType } from '@lib/core/types/color.type';
 import { AccordionModule } from 'primeng/accordion';
 import { ITableAction } from '@lib/core/interfaces/data/table/table-action.interface';
 import { IDataSourceConfig } from '@lib/core/interfaces/data/data-source-config.interface';

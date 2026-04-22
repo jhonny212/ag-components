@@ -17,7 +17,7 @@
   <ng-content select="[content]">
     @if (icon()) {
       @if (!loading()) {
-        <app-icon-fa [icon]="icon()" [color]="severity()" class="mr-0" />
+        <app-icon-fa [icon]="icon()" class="mr-0" />
       }
     }
     {{ label() }}

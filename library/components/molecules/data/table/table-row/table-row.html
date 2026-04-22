@@ -3,7 +3,7 @@
     @if (expandableRows() && start) {
       <app-icon-fa
         [pRowToggler]="data()"
-        size="xs"
+        size="small"
         color="primary"
         [enableRipple]="true"
         [icon]="expandedIcon()"
@@ -18,17 +18,19 @@
 }
 @if (actions().length && actionMode() === 'buttons') {
   <td class="actions">
-    @for (item of actions(); track $index) {
-      <app-button
-        [severity]="item.color"
-        [rounded]="true"
-        [icon]="item.faIcon"
-        size="small"
-        [loading]="!!actionsEvent().get(item.triggerAction)?.loading()"
-        [tooltip]="item.label"
-        (onClick)="handleAction(item)"
-      />
-    }
+    <div class="actions__wrapper">
+      @for (item of actions(); track $index) {
+        <app-button
+          [severity]="item.color"
+          [rounded]="true"
+          [icon]="item.faIcon"
+          size="small"
+          [loading]="!!actionsEvent().get(item.triggerAction)?.loading()"
+          [tooltip]="item.label"
+          (onClick)="handleAction(item)"
+        />
+      }
+    </div>
   </td>
 } @else if (actions().length && actionMode() === 'dropdown') {
   <td class="actions-dropdown">

@@ -9,10 +9,11 @@ import { GridView } from '../grid-view/grid-view';
 import { TableCard } from '../../card/table-card/table-card';
 import { IDataSourceFilter } from '@lib/core/interfaces/data/data-source-filter.interface';
 import { Card } from '../../../atoms/other/card/card';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-data-source',
-  imports: [GridView, DataSourceHeader, Card, TableCard],
+  imports: [GridView, DataSourceHeader, Card, TableCard, NgTemplateOutlet],
   templateUrl: './data-source.html',
   styleUrl: './data-source.scss',
 })
