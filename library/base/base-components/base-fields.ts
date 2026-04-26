@@ -18,16 +18,11 @@ export abstract class BaseField {
   isDisabled = input<boolean | undefined>(false);
 
   onClick = output<Event>();
-  onValueChange = output<any>();
 
   constructor() {}
 
   handleClick(event: Event) {
     //TODO
     //this.onClick.emit(event);
-  }
-
-  handleValueChange(value: any) {
-    this.onValueChange.emit(value);
   }
 }

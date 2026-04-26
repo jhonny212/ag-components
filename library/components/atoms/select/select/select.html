@@ -12,7 +12,7 @@
     <p-select
       class="w-full ck-select"
       [options]="data()"
-      [ngModel]="value()"
+      [(ngModel)]="value"
       [optionLabel]="labelKey()?.toString()"
       [filter]="!!filterBy()"
       [filterBy]="filterBy()?.toString()"
@@ -23,7 +23,6 @@
       [placeholder]="placeholder() || 'Seleccionar'"
       emptyFilterMessage="No se encontraron resultados"
       emptyMessage="No se encontraron resultados"
-      (ngModelChange)="onInputChange($event)"
     >
       @if (labelRender()) {
         <ng-template pTemplate="item" let-item>

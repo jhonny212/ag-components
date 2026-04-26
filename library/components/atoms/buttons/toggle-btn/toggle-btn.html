@@ -1,0 +1,28 @@
+<app-input
+  [label]="loading() ? 'Cargando...' : label()"
+  [field]="field()"
+  [errors]="errors()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    @if (!loading()) {
+      <div pRipple class="wrapper" [ngClass]="currentColor()" [class.ck-outline]="variant() === 'outline'">
+        <p-togglebutton
+          [ngModel]="value()"
+          [onLabel]="onLabel()"
+          [offLabel]="offLabel()"
+          [disabled]="disabled()"
+          class="w-full min-w-fit block"
+          [unstyled]="true"
+          (ngModelChange)="handleChange($event)"
+        />
+      </div>
+    } @else {
+      <p-skeleton width="3rem" height="1.5rem" styleClass="rounded-full" />
+    }
+  </content>
+</app-input>

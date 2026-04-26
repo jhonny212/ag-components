@@ -28,12 +28,10 @@ export abstract class BaseInputField<T> extends BaseField implements FormValueCo
   });
 
   handleChange(value: T | null) {
-    this.handleValueChange(value);
     this.value.set(value);
   }
 
   handleClear() {
-    this.handleValueChange(null);
     this.value.set(null);
   }
 }

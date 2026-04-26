@@ -15,41 +15,39 @@ import { toObservable } from '@angular/core/rxjs-interop';
 export class InputText extends BaseInputField<string> implements OnDestroy {
   type = input<'text' | 'email' | 'password'>('text');
   debounceTime = input<number>(0);
-  minTextLength = input<number>(3);
+  minTextLength = input<number>(1);
   acceptEmptyString = input<boolean>(true);
 
-  //valueChange = output<string>();
-
-  private inputSubject = new Subject<string>();
-  private subscription?: Subscription;
-
-  constructor() {
-    super();
-    // const value$ = toObservable(this.value);
-    // this.subscription = value$
-    //   .pipe(debounceTime(this.debounceTime()), distinctUntilChanged())
-    //   .subscribe((val) => {
-    //     if ((val?.length || 0) >= this.minTextLength()) {
-    //      this.valueChange.emit(val || '');
-    //       console.log("EMITIENDO");
-    //     } else if ((val === '' || val === null || val === undefined) && this.acceptEmptyString()) {
-    //       this.valueChange.emit('');
-    //     }
-    //   });
-  }
+  private debounceTimer: any;
 
   onInputChange(value: string) {
-    this.value.set(value);
-    // if (this.debounceTime()) {
-    //   console.log("ENTRO ACA");
-    //   this.inputSubject.next(value);
-    // } else {
-    //   this.valueChange.emit(value);
-    // }
+    const delay = this.debounceTime();
+    if (this.debounceTimer) {
+      clearTimeout(this.debounceTimer);
+    }
+    if (!delay || delay <= 0) {
+      this.applyValue(value);
+      return;
+    }
+    this.debounceTimer = setTimeout(() => {
+      this.applyValue(value);
+    }, delay);
+  }
+
+  private applyValue(value: string) {
+    if ((value?.length || 0) >= this.minTextLength()) {
+      this.value.set(value);
+    } else if (
+      (value === '' || value === null || value === undefined) &&
+      this.acceptEmptyString()
+    ) {
+      this.value.set('');
+    }
   }
 
   ngOnDestroy() {
-    this.subscription?.unsubscribe();
-    this.inputSubject.complete();
+    if (this.debounceTimer) {
+      clearTimeout(this.debounceTimer);
+    }
   }
 }

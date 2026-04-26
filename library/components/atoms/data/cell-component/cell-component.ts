@@ -3,8 +3,10 @@ import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
 import {
   ButtonComponent,
   CheckboxComponent,
+  ChipComponent,
   InputNumberComponent,
   SelectComponent,
+  ToggleBtnComponent,
   ToggleComponent,
   TypeDataCell,
 } from '@lib/core/types/data-cell.type';
@@ -14,11 +16,13 @@ import { Toggle } from '../../buttons/toggle/toggle';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { ComponentEvent } from '@lib/core/types/component-event.type';
 import { Select } from '../../select/select/select';
-import { InputNumber } from "../../input/input-number/input-number";
+import { InputNumber } from '../../input/input-number/input-number';
+import { Chip } from '../../other/chip/chip';
+import { ToggleBtn } from "../../buttons/toggle-btn/toggle-btn";
 
 @Component({
   selector: 'app-cell-component',
-  imports: [Button, Checkbox, Toggle, Select, InputNumber],
+  imports: [Button, Checkbox, Toggle, Select, InputNumber, Chip, ToggleBtn],
   templateUrl: './cell-component.html',
   styleUrl: './cell-component.scss',
 })
@@ -71,6 +75,22 @@ export class CellComponent<T> {
     const inputNumber = this.column().data.component;
     if (inputNumber) {
       return inputNumber(this.rowValue()) as InputNumberComponent;
+    }
+    return null;
+  });
+
+  chipDef = computed(() => {
+    const chip = this.column().data.component;
+    if (chip) {
+      return chip(this.rowValue()) as ChipComponent;
+    }
+    return null;
+  });
+
+  toggleBtn = computed(() => {
+    const toggle = this.column().data.component;
+    if (toggle) {
+      return toggle(this.rowValue()) as ToggleBtnComponent;
     }
     return null;
   });

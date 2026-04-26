@@ -3,7 +3,7 @@
     @apply h-9 w-9 min-h-9 min-w-9 rounded-full flex items-center justify-center cursor-pointer;
   }
 
-  &.size-xs {
+  &.size-small {
     @apply text-xs h-7 w-7 min-h-7 min-w-7;
   }
 

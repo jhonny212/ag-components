@@ -18,7 +18,7 @@
           [color]="checkbox.inputs?.color || 'success'"
           [(value)]="rowValue().checked"
           [labelPosition]="checkbox.inputs?.labelPosition || 'right'"
-          (onValueChange)="checkbox.outputs?.onValueChange?.($event)"
+          (valueChange)="handleComponentEvent('valueChange', 'checkbox', $event)"
         />
       }
     }
@@ -30,7 +30,7 @@
           [isDisabled]="toggle.inputs?.isDisabled"
           [loading]="cellEvent().loading()"
           [labelPosition]="toggle.inputs?.labelPosition || 'right'"
-          (onValueChange)="handleComponentEvent('valueChange', 'toggle', $event)"
+          (valueChange)="handleComponentEvent('valueChange', 'toggle', $event)"
         />
       }
     }
@@ -43,7 +43,7 @@
           [(value)]="rowValue()[column().data.field]"
           [isDisabled]="select.inputs?.isDisabled"
           [loading]="cellEvent().loading()"
-          (onValueChange)="handleComponentEvent('valueChange', 'select', $event)"
+          (valueChange)="handleComponentEvent('valueChange', 'select', $event)"
         />
       }
     }
@@ -53,11 +53,34 @@
           [mode]="inputNumber.inputs?.mode"
           [minValue]="inputNumber.inputs?.minValue"
           [maxValue]="inputNumber.inputs?.maxValue"
+          [placeholder]="inputNumber.inputs?.placeholder || ''"
           [(value)]="rowValue()[column().data.field]"
           (onInputChange)="handleComponentEvent('valueChange', 'input-number', $event)"
         />
       }
     }
-
+    @case ('chip') {
+      @if (chipDef(); as chip) {
+        <app-chip
+          [label]="chip.inputs?.label"
+          [severity]="chip.inputs?.severity"
+          [size]="chip.inputs?.size || 'small'"
+        />
+      }
+    }
+    @case ('toggle-btn') {
+      @if (toggleBtn(); as toggleBtn) {
+        <app-toggle-btn
+          [offLabel]="toggleBtn.inputs?.offLabel || ''"
+          [onLabel]="toggleBtn.inputs?.onLabel || ''"
+          [offColor]="toggleBtn.inputs?.offColor"
+          [onColor]="toggleBtn.inputs?.onColor"
+          [label]="toggleBtn.inputs?.label"
+          [variant]="toggleBtn.inputs?.variant"
+          [(value)]="rowValue()[column().data.field]"
+          (valueChange)="handleComponentEvent('valueChange', 'toggle-btn', $event)"
+        />
+      }
+    }
   }
 </div>

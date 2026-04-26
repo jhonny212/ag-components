@@ -13,8 +13,4 @@ import { BaseSelect } from '../../../../base';
 })
 export class Select<T> extends BaseSelect<T> {
   filterBy = input<keyof T>();
-
-  onInputChange(value: T | null): void {
-    this.value.set(value);
-  }
 }

@@ -1,5 +1,5 @@
 .ck-chip {
-  @apply inline-flex items-center justify-center px-3 py-1 rounded-full ck-text-base leading-none border;
+  @apply inline-flex items-center justify-center px-3 py-1 rounded-base ck-text-base leading-none border;
 
   &.small {
     @apply text-xs px-2 py-0.5;
@@ -26,7 +26,7 @@
   }
 
   &.severity-danger {
-    @apply bg-danger-900 text-danger-300;
+    @apply bg-danger-500 text-white dark:bg-danger-900 dark:text-danger-300;
 
     &.variant-outline {
       @apply bg-danger-500/50 border-danger-500 text-danger-200;
