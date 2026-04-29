@@ -18,4 +18,5 @@ export interface IDataSourceConfig<T, G = any> {
   actionMode?: ActionMode;
   defaultSortField?: keyof T;
   defaultSortDirection?: SortType;
+  toolbarActions?: ITableAction<T>[];
 }

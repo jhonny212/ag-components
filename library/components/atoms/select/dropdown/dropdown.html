@@ -3,10 +3,7 @@
     <ol>
       @for (item of options(); track item.id) {
         <li pRipple class="btn-trigger">
-          <button
-            (click)="handleOptionSelected(item);"
-            [disabled]="!!events()?.get(item.id)?.loading"
-          >
+          <button (click)="handleOptionSelected(item)">
             @if (item.icon) {
               <app-icon-fa [icon]="item.icon" />
             }
@@ -17,3 +14,5 @@
     </ol>
   </ng-template>
 </p-popover>
+
+<!-- [disabled]="!!events()?.get(item.id)?.loading" -->

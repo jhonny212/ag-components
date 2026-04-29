@@ -1,0 +1,7 @@
+.content {
+  @apply grid grid-cols-[1fr_30px] gap-2 relative;
+
+  .btn {
+    @apply flex self-end;
+  }
+}

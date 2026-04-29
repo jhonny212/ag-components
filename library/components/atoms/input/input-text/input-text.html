@@ -17,6 +17,7 @@
       [class]="'ck-input-text ' + inputClass()"
       [placeholder]="placeholder()"
       [type]="type()"
+      [disabled]="!!isDisabled()"
       [ngModel]="value()"
       (ngModelChange)="onInputChange($event)"
       (blur)="touched.set(true)"

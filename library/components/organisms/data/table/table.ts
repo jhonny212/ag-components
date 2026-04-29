@@ -19,6 +19,7 @@ import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-messag
 import { Button } from '../../../atoms/buttons/button/button';
 import { NgTemplateOutlet } from '@angular/common';
 import { filterDataTable } from '@core/util/general.util';
+import { DataToolbar } from "../../../molecules/data/data-toolbar/data-toolbar";
 
 @Component({
   selector: 'app-table',
@@ -34,7 +35,8 @@ import { filterDataTable } from '@core/util/general.util';
     EmptyMessage,
     Button,
     NgTemplateOutlet,
-  ],
+    DataToolbar
+],
   templateUrl: './table.html',
   styleUrl: './table.scss',
 })

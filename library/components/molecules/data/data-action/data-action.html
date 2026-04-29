@@ -5,9 +5,9 @@
   (onOptionSelected)="handleAction($event.value)"
 />
 <app-button
-  (onClick)="op.handleTriggerClick(false, $event)"
   [icon]="dotsIcon()"
   [rounded]="true"
   size="small"
   [severity]="btnColor()"
+  (onClick)="op.handleTriggerClick(false, $event)"
 />

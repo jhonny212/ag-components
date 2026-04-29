@@ -55,7 +55,7 @@
           [maxValue]="inputNumber.inputs?.maxValue"
           [placeholder]="inputNumber.inputs?.placeholder || ''"
           [(value)]="rowValue()[column().data.field]"
-          (onInputChange)="handleComponentEvent('valueChange', 'input-number', $event)"
+          (valueChange)="handleComponentEvent('valueChange', 'input-number', $event)"
         />
       }
     }

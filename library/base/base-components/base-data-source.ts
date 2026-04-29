@@ -50,6 +50,7 @@ export abstract class BaseDataSource<T> {
   onLoadData = output<IDataSourceFilter<T>>();
   onAction = output<ICellEvent<T>>();
   onCell = output<ICellEvent<T>>();
+  onToolbar = output<ITableAction<T>>();
 
   /**
    * Icons
@@ -100,6 +101,10 @@ export abstract class BaseDataSource<T> {
 
   handleAction(action: ICellEvent<T>): void {
     this.onAction.emit(action);
+  }
+
+  handleToolbarAction(action: ITableAction<T>): void {
+    this.onToolbar.emit(action);
   }
 
   handleCellEvent(event: ICellEvent<T>): void {

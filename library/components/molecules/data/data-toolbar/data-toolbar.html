@@ -1,1 +1,12 @@
-<p>data-toolbar works!</p>
+<div class="data-toolbar">
+  @for (item of actions(); track item.triggerAction) {
+    <app-button
+      size="small"
+      [severity]="item.color"
+      [rounded]="true"
+      [icon]="item.faIcon"
+      [tooltip]="item.label"
+      (onClick)="handleAction(item)"
+    />
+  }
+</div>

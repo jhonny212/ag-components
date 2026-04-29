@@ -29,7 +29,7 @@
     (onRowExpand)="handleRowExpanded($event)"
     (onRowCollapse)="handleRowCollapsed($event)"
   >
-    @if (hasBasicSearch() || enableReload()) {
+    @if (hasBasicSearch() || enableReload() || dataSourceConfig().toolbarActions?.length) {
       <ng-template #caption>
         <div class="toolbar" [class.flex-row-reverse]="enableReload() && !hasBasicSearch()">
           @if (hasBasicSearch()) {
@@ -41,6 +41,13 @@
                 (valueChange)="handleSearch($event)"
               />
             </div>
+          }
+          @if (dataSourceConfig().toolbarActions?.length) {
+            <app-data-toolbar
+              class="w-full justify-items-end"
+              [actions]="dataSourceConfig().toolbarActions || []"
+              (onAction)="handleToolbarAction($event)"
+            />
           }
           @if (enableReload()) {
             <app-button
