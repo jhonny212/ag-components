@@ -12,6 +12,7 @@
     @if (!loading()) {
       <p-toggleswitch
         [ngModel]="value()"
+        [disabled]="!!isDisabled()"
         (ngModelChange)="onInputChange($event)"
         [disabled]="!!isDisabled()"
       />

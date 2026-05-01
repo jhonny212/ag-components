@@ -4,6 +4,7 @@ import {
   contentChildren,
   input,
   model,
+  output,
   signal,
   TemplateRef,
 } from '@angular/core';
@@ -29,6 +30,9 @@ export class Stepper {
   // ── State ────────────────────────────────────────────────
   activeIndex = signal<number>(0);
 
+  // OUTPUTS
+  onStepChange = output<IStep>();
+
   // ── Computed ─────────────────────────────────────────────
   currentIndex = computed(() => this.steps().findIndex((s) => s.id === this.activeIndex()));
   isFirst = computed(() => this.currentIndex() === 0);
@@ -41,4 +45,10 @@ export class Stepper {
     }
     return map;
   });
+
+  handleStepChange(index?: number): void {
+    if (index !== undefined) {
+      this.onStepChange.emit(this.steps()[index]);
+    }
+  }
 }
