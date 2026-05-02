@@ -14,11 +14,11 @@ p-skeleton {
 }
 
 .title {
-  @apply ck-title-medium;
+  @apply font-semibold text-base sm:text-lg md:text-xl;
 }
 
 .subtitle {
-  @apply ck-subtitle;
+  @apply text-base sm:text-lg;
 }
 
 .content {
