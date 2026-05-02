@@ -1,5 +1,5 @@
 .title {
-  @apply flex justify-between ck-title-medium ck-base-primary-color;
+  @apply flex justify-between font-semibold text-base sm:text-lg md:text-xl ck-base-primary-color;
 }
 
 .view {
@@ -11,6 +11,6 @@
 }
 
 .subtitle {
-  @apply mb-3 ck-text-base;
+  @apply mb-3 text-sm sm:text-base;
   @apply dark:text-primary-100;
 }
