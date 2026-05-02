@@ -1,5 +1,5 @@
 import { IPagination } from '@lib/core/interfaces/data/pagination.interface';
-import { IBasePagedRequest } from '../../../core/interfaces/http/request.interface';
+import { IBasePagedRequest } from '../interfaces/http/request.interface';
 import { IDataSourceFilter } from '@lib/core/interfaces/data/data-source-filter.interface';
 
 export class PaginatorHelper {
