@@ -5,7 +5,8 @@ import { IDropdownOption } from '@lib/core/interfaces/select/dropdown-option.int
 import { ITableAction } from '@lib/core/interfaces/data/table/table-action.interface';
 import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interface';
 import { faEllipsis, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { useDarkMode } from '@core/util/general.util';
+import { useDarkMode } from '@lib/core/utils/ui.util';
+
 
 @Component({
   selector: 'app-data-action',

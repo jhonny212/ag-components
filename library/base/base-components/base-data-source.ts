@@ -1,7 +1,6 @@
 import { Component, computed, input, model, output, signal } from '@angular/core';
-import { FilterHelper } from '@core/helper/filter.helper';
 import { IPagedResource } from '@lib/core/interfaces/http/resource.interface';
-import { ActionMode } from '@core/types/action-mode.type';
+import { ActionMode } from '@lib/core/types/action-mode.type';
 import { IDataSourceConfig } from '@lib/core/interfaces/data/data-source-config.interface';
 import { IDataSourceFilter } from '@lib/core/interfaces/data/data-source-filter.interface';
 import { IPagination } from '@lib/core/interfaces/data/pagination.interface';
@@ -10,6 +9,7 @@ import { ICellEvent } from '@lib/core/interfaces/data/table/table-event.interfac
 import { PaginatorState } from 'primeng/paginator';
 import { TableLazyLoadEvent, TableRowSelectEvent } from 'primeng/table';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
+import { PaginatorHelper } from '@lib/core/helpers/paginator.helper';
 
 @Component({
   template: '',
@@ -40,7 +40,7 @@ export abstract class BaseDataSource<T> {
   hasBasicSearch = input<boolean>(false);
   hasPagination = input<boolean>(true);
   searchTerm = signal<string>('');
-  dataSourceFilter = model<IDataSourceFilter<T>>(FilterHelper.toDefaultDataSourceFilter<T>());
+  dataSourceFilter = model<IDataSourceFilter<T>>(PaginatorHelper.toDefaultDataSourceFilter<T>());
   addEmptyRows = input<boolean>(true);
 
   /**

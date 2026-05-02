@@ -1,8 +1,7 @@
 import { Component, computed, input, OnInit, signal } from '@angular/core';
-import { useScreenSize } from '@core/util/general.util';
 import { TableRowSelectEvent } from 'primeng/table';
 import { faGridHorizontal, faTable } from '@fortawesome/free-solid-svg-icons';
-import { PaginatorHelper } from '@core/helper/paginator.helper';
+import { PaginatorHelper } from '@lib/core/helpers/paginator.helper';
 import { DataSourceHeader } from './data-source-header/data-source-header';
 import { BaseDataSource } from 'src/app/shared/library/base';
 import { GridView } from '../grid-view/grid-view';
@@ -26,8 +25,6 @@ export class DataSource<T> extends BaseDataSource<T> implements OnInit {
 
   tableView = faTable;
   cardView = faGridHorizontal;
-
-  screen = useScreenSize();
 
   isTableViewSelected = computed(() => this.isTableView());
 

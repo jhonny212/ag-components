@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { TableModule } from 'primeng/table';
-import { ActionMode } from '@core/types/action-mode.type';
+import { ActionMode } from '@lib/core/types/action-mode.type';
 import { CommonModule } from '@angular/common';
 import { IColumn } from '@lib/core/interfaces/data/table/column.interface';
 import { ITableAction } from '@lib/core/interfaces/data/table/table-action.interface';

@@ -18,8 +18,8 @@ import { TableRow } from '../../../molecules/data/table/table-row/table-row';
 import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-message';
 import { Button } from '../../../atoms/buttons/button/button';
 import { NgTemplateOutlet } from '@angular/common';
-import { filterDataTable } from '@core/util/general.util';
 import { DataToolbar } from "../../../molecules/data/data-toolbar/data-toolbar";
+import { filterDataTable } from '@lib/core/utils/ui.util';
 
 @Component({
   selector: 'app-table',

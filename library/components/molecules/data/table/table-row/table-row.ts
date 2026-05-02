@@ -1,5 +1,5 @@
 import { Component, computed, inject, input, output, signal } from '@angular/core';
-import { ActionMode } from '@core/types/action-mode.type';
+import { ActionMode } from '@lib/core/types/action-mode.type';
 import {
   faArrowDown,
   faArrowRight,
