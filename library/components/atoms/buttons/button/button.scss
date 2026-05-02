@@ -2,7 +2,7 @@
   --height: auto;
 }
 
-.ck-button {
+.ag-button {
   @apply p-2 rounded-base w-full h-[var(--height)] relative gap-0 overflow-hidden text-sm sm:text-base;
 
   &.variant-normal {

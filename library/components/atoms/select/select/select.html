@@ -10,7 +10,7 @@
 >
   <content>
     <p-select
-      class="w-full ck-select"
+      class="w-full ag-select"
       [options]="data()"
       [(ngModel)]="value"
       [optionLabel]="labelKey()?.toString()"
@@ -19,7 +19,7 @@
       [showClear]="showClear()"
       [invalid]="hasErrors()"
       appendTo="body"
-      panelStyleClass="ck-select"
+      panelStyleClass="ag-select"
       [placeholder]="placeholder() || 'Seleccionar'"
       emptyFilterMessage="No se encontraron resultados"
       emptyMessage="No se encontraron resultados"

@@ -1,13 +1,13 @@
 .wrapper {
   @apply rounded-base p-1.5;
 
-  &.ck-outline {
+  &.ag-outline {
     @apply border;
   }
 }
 .wrapper.primary {
   @apply bg-primary-700 text-primary-300;
-  &.ck-outline {
+  &.ag-outline {
     @apply bg-primary-700/50 border-primary-700 text-primary-300;
   }
 }
@@ -22,21 +22,21 @@
 
 .wrapper.success {
   @apply bg-success-700 text-success-300;
-  &.ck-outline {
+  &.ag-outline {
     @apply bg-success-700/50 border-success-700 text-success-300;
   }
 }
 
 .wrapper.help {
   @apply bg-help-700 text-help-300;
-  &.ck-outline {
+  &.ag-outline {
     @apply bg-help-700/50 border-help-700 text-help-300;
   }
 }
 
 .wrapper.warn {
   @apply bg-orange-700 text-orange-300;
-  &.ck-outline {
+  &.ag-outline {
     @apply bg-orange-700/50 border-orange-700 text-orange-300;
   }
 }

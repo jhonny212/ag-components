@@ -1,6 +1,6 @@
 @for (item of columns(); track $index) {
   <th
-    class="ck-table-header"
+    class="ag-table-header"
     [pSortableColumn]="item.header?.sortableField?.toString()"
     [style.width]="item.width"
     [style.min-width]="item.minWidth"
@@ -13,7 +13,7 @@
 
 @if (actions().length) {
   <th
-    class="ck-table-header"
+    class="ag-table-header"
     [class.last-column]="true"
     [ngStyle]="{
       width: actionMinWidth(),

@@ -2,7 +2,7 @@
   <p-table
     #dtTable
     stripedRows
-    class="ck-table"
+    class="ag-table"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
     [globalFilterFields]="['name']"
     [showCurrentPageReport]="true"
@@ -17,7 +17,7 @@
     [(selection)]="selectedProduct"
     [metaKeySelection]="true"
     paginatorDropdownAppendTo="body"
-    paginatorStyleClass="ck-paginator"
+    paginatorStyleClass="ag-paginator"
     [dataKey]="primaryKey()?.toString()"
     [filterDelay]="0"
     [sortField]="defaultSortField()"

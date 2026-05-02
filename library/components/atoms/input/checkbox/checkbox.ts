@@ -17,7 +17,7 @@ export class Checkbox extends BaseInputField<boolean> {
   size = input<SizeType>('medium');
   disabled = input<boolean>(false);
 
-  checkboxClass = computed(() => `ck-checkbox ${this.color()} ${this.size()} ${this.inputClass()}`.trim());
+  checkboxClass = computed(() => `ag-checkbox ${this.color()} ${this.size()} ${this.inputClass()}`.trim());
 
   onInputChange(event: Event) {
     const target = event.target as HTMLInputElement | null;
