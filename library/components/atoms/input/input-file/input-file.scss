@@ -1,0 +1,31 @@
+.input-file-wrapper {
+  width: 100%;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.selected-files {
+  margin: 0.75rem 0 0;
+  padding-left: 1rem;
+}
+
+.file-name {
+  font-weight: 600;
+}
+
+.file-meta {
+  margin-left: 0.25rem;
+  opacity: 0.75;
+}
+
+.disabled {
+  opacity: 0.8;
+}
