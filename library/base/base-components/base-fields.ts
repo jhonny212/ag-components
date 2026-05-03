@@ -11,7 +11,7 @@ export abstract class BaseField {
   placeholder = input<string>('');
   help = input<string>();
   showRequired = input<boolean>(true);
-  field = input<string | undefined>(undefined);
+  field = input<string | undefined>(crypto.randomUUID());
   loading = input<boolean>(false);
   inputClass = input<string>('');
   icon = input<IconDefinition | undefined>(undefined);
@@ -22,7 +22,6 @@ export abstract class BaseField {
   constructor() {}
 
   handleClick(event: Event) {
-    //TODO
-    //this.onClick.emit(event);
+    this.onClick.emit(event);
   }
 }
