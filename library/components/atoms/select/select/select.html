@@ -23,6 +23,8 @@
       [placeholder]="placeholder() || 'Seleccionar'"
       emptyFilterMessage="No se encontraron resultados"
       emptyMessage="No se encontraron resultados"
+      [lazy]="serverSide()"
+      (onLazyLoad)="handleFilter($event)"
     >
       @if (labelRender()) {
         <ng-template pTemplate="item" let-item>

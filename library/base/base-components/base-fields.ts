@@ -11,18 +11,18 @@ export abstract class BaseField {
   placeholder = input<string>('');
   help = input<string>();
   showRequired = input<boolean>(true);
-  field = input<string | undefined>(undefined);
+  field = input<string | undefined>(crypto.randomUUID());
   loading = input<boolean>(false);
   inputClass = input<string>('');
   icon = input<IconDefinition | undefined>(undefined);
   isDisabled = input<boolean | undefined>(false);
+  appendTo = input<string | undefined>(undefined);
 
   onClick = output<Event>();
 
   constructor() {}
 
   handleClick(event: Event) {
-    //TODO
-    //this.onClick.emit(event);
+    this.onClick.emit(event);
   }
 }

@@ -13,4 +13,6 @@ import { BaseSelect } from '../../../../base';
 })
 export class Select<T> extends BaseSelect<T> {
   filterBy = input<keyof T>();
+
+  handleFilter(event: any): void {}
 }

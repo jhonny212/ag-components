@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component, TemplateRef, computed, input } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
-import { ButtonSeverity } from 'primeng/button';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { VariantType } from '@lib/core/types/variant.type';
 import { ColorType } from '@lib/core/types/color.type';
 import { SizeType } from '@lib/core/types/size.type';
