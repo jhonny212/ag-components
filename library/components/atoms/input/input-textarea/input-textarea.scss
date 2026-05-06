@@ -1,0 +1,6 @@
+.ag-input-textarea {
+  @apply w-full min-h-32 px-4 py-3 rounded-xl border border-gray-300 bg-ck-neutral-700 text-sm text-gray-100 leading-6;
+  @apply transition-colors duration-200 ease-in-out resize-y;
+  @apply focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
+  @apply disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500 disabled:opacity-80;
+}
