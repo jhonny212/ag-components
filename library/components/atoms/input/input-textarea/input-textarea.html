@@ -1,0 +1,28 @@
+<app-input
+  [errors]="errors()"
+  [field]="field()"
+  [label]="label()"
+  [help]="help()"
+  [touched]="touched()"
+  [invalid]="invalid()"
+  [icon]="icon()"
+  [hasRequired]="hasRequired()"
+  [showRequired]="showRequired()"
+>
+  <content>
+    <textarea
+      [id]="field()"
+      [rows]="rows()"
+      [cols]="cols()"
+      [maxlength]="maxLength() ?? null"
+      [class]="'ag-input-textarea ' + inputClass()"
+      [placeholder]="placeholder()"
+      [disabled]="disabledComponent()"
+      [ngModel]="value() ?? ''"
+      (ngModelChange)="onInputChange($event)"
+      (blur)="touched.set(true)"
+      (click)="handleClick($event)"
+      [style.resize]="autoResize() ? 'none' : resize()"
+    ></textarea>
+  </content>
+</app-input>
