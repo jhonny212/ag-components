@@ -1,1 +1,1 @@
-export type ComponentEvent = 'valueChange';
+export type ComponentEvent = 'valueChange' | 'click';

@@ -3,6 +3,7 @@
   [class.variant-outline]="variant() === 'outline'"
   [class.variant-normal]="variant() === 'normal'"
   [class.small]="size() === 'small'"
+  (click)="handleClick($event)"
 >
   {{ label() }}
 </span>

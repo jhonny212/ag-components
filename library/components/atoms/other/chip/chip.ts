@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { VariantType } from '@lib/core/types/variant.type';
 import { ColorType } from '@lib/core/types/color.type';
 import { SizeType } from '@lib/core/types/size.type';
-import { Ripple } from "primeng/ripple";
+import { Ripple } from 'primeng/ripple';
 
 @Component({
   selector: 'app-chip',
@@ -17,4 +17,10 @@ export class Chip {
   variant = input<VariantType>('normal');
   size = input<SizeType>('medium');
   customClass = input<string>('');
+
+  onClick = output<void>();
+
+  handleClick(event: MouseEvent): void {
+    this.onClick.emit();
+  }
 }

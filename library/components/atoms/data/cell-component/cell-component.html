@@ -65,6 +65,7 @@
           [label]="chip.inputs?.label"
           [severity]="chip.inputs?.severity"
           [size]="chip.inputs?.size || 'small'"
+          (onClick)="handleComponentEvent('click', 'chip', $event)"
         />
       }
     }
