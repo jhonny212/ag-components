@@ -1,4 +1,14 @@
-import { Component, computed, input, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  contentChild,
+  ContentChild,
+  input,
+  model,
+  OnInit,
+  signal,
+  TemplateRef,
+} from '@angular/core';
 import { TableRowSelectEvent } from 'primeng/table';
 import { faGridHorizontal, faTable } from '@fortawesome/free-solid-svg-icons';
 import { PaginatorHelper } from '@lib/core/helpers/paginator.helper';
@@ -20,7 +30,9 @@ export class DataSource<T> extends BaseDataSource<T> implements OnInit {
   title = input.required<string>();
   subTitle = input<string>('');
 
-  isTableView = signal(true);
+  cardTemplate = contentChild<TemplateRef<any>>('card');
+
+  isTableView = model<boolean>(true);
   firstLoad = signal(false);
 
   tableView = faTable;

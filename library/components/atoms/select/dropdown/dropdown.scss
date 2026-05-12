@@ -10,7 +10,7 @@
 
 .btn-trigger {
   button {
-    @apply p-2 w-full text-sm xs:text-sm md:text-base text-left hover:bg-gray-100 rounded;
+    @apply p-1 w-full text-sm xs:text-sm md:text-base text-left hover:bg-gray-100 rounded;
     @apply dark:hover:bg-ck-neutral-700 dark:text-neutral-300;
   }
 

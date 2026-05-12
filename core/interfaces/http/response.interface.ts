@@ -1,6 +1,9 @@
+import { Signal, WritableSignal } from '@angular/core';
+
 export interface IBaseResponse {
   success: boolean;
   message: string;
+  loading?: boolean;
 }
 
 export interface IResponse<T> extends IBaseResponse {

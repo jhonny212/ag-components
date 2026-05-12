@@ -7,7 +7,7 @@ app-paginator {
 
   .view-content {
     @apply grid gap-y-3;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
   }
 }
 

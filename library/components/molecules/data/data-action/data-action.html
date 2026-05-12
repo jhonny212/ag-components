@@ -4,10 +4,6 @@
   [events]="cellEvents()"
   (onOptionSelected)="handleAction($event.value)"
 />
-<app-button
-  [icon]="dotsIcon()"
-  [rounded]="true"
-  size="small"
-  [severity]="btnColor()"
-  (onClick)="op.handleTriggerClick(false, $event)"
-/>
+<button class="p-1 rounded-full text-gray-300" (click)="op.handleTriggerClick(false, $event)">
+  <app-icon-fa [icon]="dotsIcon()" />
+</button>

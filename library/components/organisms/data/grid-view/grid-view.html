@@ -1,14 +1,16 @@
 <div class="view">
   @if (data().length) {
     <div class="toolbar">
-      <app-button
-        tooltip="Recargar datos"
-        [loading]="isLoadingData()"
-        [icon]="reloadIcon()"
-        [rounded]="true"
-        size="small"
-        (onClick)="handleReloadData()"
-      />
+      @if (enableReload()) {
+        <app-button
+          tooltip="Recargar datos"
+          [loading]="isLoadingData()"
+          [icon]="reloadIcon()"
+          [rounded]="true"
+          size="small"
+          (onClick)="handleReloadData()"
+        />
+      }
       <app-paginator
         class="grid-paginator"
         pageTemplate="{first} a {last}"
@@ -22,16 +24,23 @@
     </div>
     <div class="view-content">
       @for (item of data(); track $index) {
-        <app-grid-card
-          class="px-2"
-          [selectedItem]="selectedItem()"
-          [item]="item"
-          [dataSourceConfig]="dataSourceConfig()"
-          [actions]="dataSourceActions()"
-          (onClick)="handleClick($event)"
-          (onAction)="handleAction($event)"
-          (componentCellEvent)="handleCellEvent($event)"
-        />
+        @if (dataSourceConfig().mobileMode === 'card-custom') {
+          <ng-container
+            *ngTemplateOutlet="cardTemplate(); context: { $implicit: item }"
+          ></ng-container>
+        } @else {
+          <app-grid-card
+            class="px-2"
+            [selectedItem]="selectedItem()"
+            [item]="item"
+            [dataSourceConfig]="dataSourceConfig()"
+            [actions]="dataSourceActions()"
+            (onClick)="handleClick($event)"
+            (onAction)="handleAction($event)"
+            (componentCellEvent)="handleCellEvent($event)"
+          >
+          </app-grid-card>
+        }
       }
     </div>
   } @else {

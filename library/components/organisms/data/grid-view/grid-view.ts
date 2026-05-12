@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, input, signal, TemplateRef } from '@angular/core';
 import { GridViewMode } from '@lib/core/types/data-source-view.type';
 import { PaginatorState } from 'primeng/paginator';
 import { TableLazyLoadEvent } from 'primeng/table';
@@ -8,16 +8,18 @@ import { GridCard } from '../../../molecules';
 import { Paginator } from '../../../atoms/data/paginator/paginator';
 import { EmptyMessage } from '../../../atoms/messages/empty-message/empty-message';
 import { Button } from '../../../atoms/buttons/button/button';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-grid-view',
-  imports: [GridCard, Paginator, EmptyMessage, Button],
+  imports: [GridCard, Paginator, EmptyMessage, Button, NgTemplateOutlet],
   templateUrl: './grid-view.html',
   styleUrl: './grid-view.scss',
 })
 export class GridView<T> extends BaseDataSource<T> {
   mode = signal<GridViewMode>('card');
   selectedItem = signal<T | null>(null);
+  cardTemplate = input<TemplateRef<any>>();
 
   emptyIcon = faTable;
 
