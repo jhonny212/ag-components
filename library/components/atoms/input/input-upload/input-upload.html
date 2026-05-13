@@ -1,0 +1,27 @@
+<div class="card">
+  <p-fileupload
+    #fileUpload
+    name="demo[]"
+    [accept]="accept()"
+    [multiple]="multiple()"
+    [fileLimit]="maxFiles()"
+    mode="advanced"
+    chooseLabel="Seleccionar archivo"
+    uploadLabel="Subir"
+    cancelLabel="Limpiar"
+    uploadStyleClass="bg-success-800"
+    cancelStyleClass="bg-orange-700"
+    [showUploadButton]="showUploadButton()"
+    [customUpload]="custom()"
+    (onSelect)="onSelect.emit($event)"
+    (uploadHandler)="handleUpload($event, fileUpload)"
+  >
+    <ng-template #empty>
+      <app-empty-message
+        [icon]="icon"
+        title="No hay archivos disponibles"
+        message="Arrastra y suelta"
+      />
+    </ng-template>
+  </p-fileupload>
+</div>

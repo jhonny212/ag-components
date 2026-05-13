@@ -1,0 +1,28 @@
+<div
+  class="drop-zone"
+  [class.dragging]="isDragging()"
+  [class.disabled]="disabled()"
+  role="button"
+  [attr.tabindex]="disabled() ? -1 : 0"
+  [attr.aria-disabled]="disabled()"
+  [attr.aria-label]="title()"
+  (click)="onActivate($event)"
+  (keydown)="onKeydown($event)"
+  (dragenter)="onDragEnter($event)"
+  (dragleave)="onDragLeave($event)"
+  (dragover)="onDragOver($event)"
+  (drop)="onDrop($event)"
+>
+  <div class="drop-zone-copy">
+    <strong>{{ title() }}</strong>
+    <span>{{ hint() }}</span>
+  </div>
+
+  <div class="drop-zone-meta">
+    @if (acceptLabel()) {
+      <span>Tipos admitidos: {{ acceptLabel() }}</span>
+    }
+
+    <span>{{ multiple() ? 'Puedes soltar varios archivos' : 'Solo un archivo' }}</span>
+  </div>
+</div>

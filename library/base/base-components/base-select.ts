@@ -12,4 +12,5 @@ export abstract class BaseSelect<T> extends BaseInputField<T> {
   showClear = input<boolean>(false);
   serverSide = input<boolean>(false);
   dataKey = input<keyof T | undefined>(undefined);
+  optionalValue = input<any | undefined>(undefined);
 }

@@ -22,6 +22,18 @@
         (change)="onFileInputChange($event)"
       />
 
+      @if (showDragAndDrop()) {
+        <app-input-file-drop-zone
+          [accept]="accept()"
+          [disabled]="disabledComponent()"
+          [multiple]="multiple()"
+          [title]="dragAndDropTitle()"
+          [hint]="dragAndDropHint()"
+          (openPickerRequested)="onRequestOpenPicker()"
+          (filesDropped)="onFilesDropped($event)"
+        />
+      }
+
       <div class="actions">
         <app-button
           [label]="selectButtonLabel()"
@@ -41,7 +53,7 @@
         @if (showClearButton()) {
           <app-button
             [label]="clearButtonLabel()"
-            [disable]="disabledComponent() || !hasFiles()"
+            [disable]="disabledComponent() || !hasFiles()" 
             severity="contrast"
             variant="outline"
             (onClick)="onClearFiles()"
@@ -49,16 +61,7 @@
         }
       </div>
 
-      @if (hasFiles()) {
-        <ul class="selected-files">
-          @for (file of selectedFiles(); track file.name + file.size + file.lastModified) {
-            <li>
-              <span class="file-name">{{ file.name }}</span>
-              <span class="file-meta">({{ file.size }} bytes)</span>
-            </li>
-          }
-        </ul>
-      }
+        <app-input-file-selected-files [files]="selectedFiles()" />
     </div>
   </content>
 </app-input>

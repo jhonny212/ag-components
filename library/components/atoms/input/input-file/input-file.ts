@@ -10,10 +10,12 @@ import {
 import { BaseInputField } from 'src/app/shared/library/base';
 import { Button } from '../../buttons/button/button';
 import { Input } from '../input/input';
+import { InputFileDropZone } from './components/input-file-drop-zone/input-file-drop-zone';
+import { InputFileSelectedFiles } from './components/input-file-selected-files/input-file-selected-files';
 
 @Component({
   selector: 'app-input-file',
-  imports: [Input, Button],
+  imports: [Input, Button, InputFileDropZone, InputFileSelectedFiles],
   templateUrl: './input-file.html',
   styleUrl: './input-file.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,6 +24,10 @@ export class InputFile extends BaseInputField<File[]> {
   accept = input<string>('*/*');
   multiple = input<boolean>(false);
   maxFiles = input<number | null>(null);
+  showDragAndDrop = input<boolean>(false);
+
+  dragAndDropTitle = input<string>('Arrastra y suelta el archivo aquí');
+  dragAndDropHint = input<string>('o haz clic para seleccionarlo');
 
   selectButtonLabel = input<string>('Seleccionar archivo');
   uploadButtonLabel = input<string>('Subir');
@@ -51,9 +57,21 @@ export class InputFile extends BaseInputField<File[]> {
     const inputElement = event.target as HTMLInputElement;
     const files = inputElement.files ? Array.from(inputElement.files) : [];
 
+    this.handleSelectedFiles(files);
+    inputElement.value = '';
+  }
+
+  onFilesDropped(files: File[]) {
+    this.handleSelectedFiles(files);
+  }
+
+  onRequestOpenPicker() {
+    this.onOpenFilePicker();
+  }
+
+  private handleSelectedFiles(files: File[]) {
     const maxFiles = this.maxFiles();
-    const normalizedFiles =
-      maxFiles && maxFiles > 0 ? files.slice(0, maxFiles) : files;
+    const normalizedFiles = maxFiles && maxFiles > 0 ? files.slice(0, maxFiles) : files;
 
     this.value.set(normalizedFiles);
     this.touched.set(true);

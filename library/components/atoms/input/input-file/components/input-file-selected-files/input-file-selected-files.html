@@ -1,0 +1,10 @@
+@if (files().length > 0) {
+  <ul class="selected-files">
+    @for (file of files(); track file.name + file.size + file.lastModified) {
+      <li class="selected-file">
+        <span class="file-name">{{ file.name }}</span>
+        <span class="file-meta">({{ file.size }} bytes)</span>
+      </li>
+    }
+  </ul>
+}
