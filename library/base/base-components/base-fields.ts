@@ -16,7 +16,7 @@ export abstract class BaseField {
   inputClass = input<string>('');
   icon = input<IconDefinition | undefined>(undefined);
   isDisabled = input<boolean | undefined>(false);
-  appendTo = input<string | undefined>(undefined);
+  appendTo = input<string | undefined>("self");
 
   onClick = output<Event>();
 
