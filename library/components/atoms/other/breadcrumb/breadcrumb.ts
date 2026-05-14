@@ -18,7 +18,7 @@ export class Breadcrumb {
 
   items = input<MenuItem[]>();
 
-  home = input.required<IBreadcrumb | undefined>();
+  home = input<IBreadcrumb | undefined>(undefined);
 
   handleRedirect(item: MenuItem) {
     if (item.routerLink) {

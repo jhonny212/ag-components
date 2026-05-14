@@ -1,21 +1,51 @@
 <div class="breadcrumb">
-  <p-breadcrumb [model]="items() || []" [home]="home">
-    <ng-template pTemplate="item" let-item>
-      <div
-        class="content"
-        [pTooltip]="item.label"
-        tooltipPosition="top"
-        tooltipStyleClass="tooltip-info"
-      >
-        @if (item.faIcon) {
-          <app-icon-fa class="cursor-pointer" [icon]="item.faIcon" (click)="handleRedirect(item)" />
-        }
-        @if (item.routerLink) {
-          <a [routerLink]="item.routerLink">{{ item.label }}</a>
-        } @else {
-          <a>{{ item.label }}</a>
-        }
-      </div>
-    </ng-template>
-  </p-breadcrumb>
+  @if (home()) {
+    <p-breadcrumb [model]="items() || []" [home]="home">
+      <ng-template pTemplate="item" let-item>
+        <div
+          class="content"
+          [pTooltip]="item.label"
+          tooltipPosition="top"
+          tooltipStyleClass="tooltip-info"
+        >
+          @if (item.faIcon) {
+            <app-icon-fa
+              class="cursor-pointer"
+              [icon]="item.faIcon"
+              (click)="handleRedirect(item)"
+            />
+          }
+          @if (item.routerLink) {
+            <a [routerLink]="item.routerLink">{{ item.label }}</a>
+          } @else {
+            <a>{{ item.label }}</a>
+          }
+        </div>
+      </ng-template>
+    </p-breadcrumb>
+  } @else {
+    <p-breadcrumb [model]="items() || []">
+      <ng-template pTemplate="item" let-item>
+        <div
+          class="content"
+          [pTooltip]="item.label"
+          tooltipPosition="top"
+          tooltipStyleClass="tooltip-info"
+        >
+          @if (item.faIcon) {
+            <app-icon-fa
+              class="cursor-pointer"
+              [icon]="item.faIcon"
+              (click)="handleRedirect(item)"
+            />
+          }
+          @if (item.routerLink) {
+            <a [routerLink]="item.routerLink">{{ item.label }}</a>
+          } @else {
+            <a>{{ item.label }}</a>
+          }
+        </div>
+      </ng-template>
+    </p-breadcrumb>
+  }
 </div>
