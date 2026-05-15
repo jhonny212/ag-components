@@ -1,3 +1,9 @@
+:host {
+  --color: var(--primary-500);
+  --background: var(--primary-50);
+  --border-color: var(--primary-500);
+}
+
 .ag-chip {
   @apply inline-flex items-center justify-center px-3 py-1 rounded-base text-sm sm:text-base leading-none border;
   @apply text-sm md:text-base cursor-pointer;
@@ -8,6 +14,15 @@
 
   &.variant-normal {
     @apply border-transparent;
+  }
+
+  &.severity-custom {
+    @apply bg-[var(--background)] text-[var(--color)];
+    border: 1px solid var(--border-color);
+
+    // &.variant-outline {
+    //   @apply bg-[var(--background)]/10 border-[var(--color)] text-[var(--color)];
+    // }
   }
 
   &.severity-primary {
