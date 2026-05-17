@@ -10,8 +10,5 @@ export class InputUploadItem {
   file = input<File | null>(null);
 
   constructor() {
-    setTimeout(() => {
-      console.log(this.file());
-    }, 100);
   }
 }
